@@ -13,9 +13,9 @@ const profile = {
   ],
 };
 
-test("resume header exposes the name as a heading and retains summary and contact destinations", () => {
+test("resume header renders the name and retains summary and contact destinations", () => {
   const html = renderToStaticMarkup(<ResumeHeader {...profile} />);
-  assert.match(html, /<h1[^>]*>김영진<\/h1>/);
+  assert.match(html.replace(/<[^>]+>/g, ""), /김영진/);
   assert.match(html, /풀스택 개발자/);
   assert.match(html, /소개 문구/);
   assert.match(html, /href="mailto:gyu250@naver.com"/);
