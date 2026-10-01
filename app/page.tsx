@@ -1,69 +1,143 @@
-import Image from "next/image";
+import { A4Layout, A4Page } from "@/components/layout/a4-layout";
+import { PrintButton } from "@/components/layout/print-button";
+import { Paragraph } from "@/components/typography/paragraph";
+
+const Link = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <Paragraph typography="t5" className="text-blue-600 underline">
+        {children}
+      </Paragraph>
+    </a>
+  );
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <A4Layout
+      toolbar={
+        <div className="flex items-center justify-end w-full print:hidden">
+          <PrintButton />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      }
+    >
+      <A4Page aria-label="이력서 1페이지" className="flex flex-col">
+        <header className="flex gap-3 items-center justify-between pb-4">
+          <div className="flex gap-3 items-center">
+            <Paragraph typography="t1" fontWeight="medium">
+              김영진
+            </Paragraph>
+            <Paragraph typography="t5" className="text-zinc-600">
+              풀스택 개발자
+            </Paragraph>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <div className="flex gap-2 items-center">
+              <Paragraph
+                typography="t5"
+                fontWeight="semibold"
+                className="min-w-14"
+              >
+                Contact
+              </Paragraph>
+              <Paragraph typography="t5" className="text-zinc-600">
+                010-9456-0400
+              </Paragraph>
+            </div>
+            <div className="flex gap-2 items-center">
+              <Paragraph
+                typography="t5"
+                fontWeight="semibold"
+                className="min-w-14"
+              >
+                Email
+              </Paragraph>
+              <Paragraph typography="t5" className="text-zinc-600">
+                gyu250@naver.com
+              </Paragraph>
+            </div>
+            <div className="flex gap-2 items-center">
+              <Paragraph
+                typography="t5"
+                className="min-w-14"
+                fontWeight="semibold"
+              >
+                Github
+              </Paragraph>
+              <Link href="https://github.com/kimyoungjin98">kimyoungjin98</Link>
+            </div>
+          </div>
+        </header>
+
+        <div className="mt-10 space-y-10">
+          <section
+            className="grid gap-3 sm:grid-cols-[28mm_1fr]"
+            aria-labelledby="profile-heading"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h2 id="profile-heading" className="text-sm font-semibold">
+              소개
+            </h2>
+            <Paragraph typography="t5" className="leading-7 text-zinc-500">
+              나의 전문 분야와 일하는 방식을 소개해 주세요.
+            </Paragraph>
+          </section>
+          <section
+            className="grid gap-3 sm:grid-cols-[28mm_1fr]"
+            aria-labelledby="experience-heading"
           >
-            Documentation
-          </a>
+            <h2 id="experience-heading" className="text-sm font-semibold">
+              경력
+            </h2>
+            <div className="border-l border-zinc-200 pl-5">
+              <h3 className="text-sm font-medium">회사명 · 직무</h3>
+              <Paragraph typography="t6" className="mt-2 text-zinc-400">
+                시작 연월 — 종료 연월
+              </Paragraph>
+              <Paragraph
+                typography="t5"
+                className="mt-4 leading-7 text-zinc-500"
+              >
+                맡은 역할과 주요 성과를 작성해 주세요.
+              </Paragraph>
+            </div>
+          </section>
+          <section
+            className="grid gap-3 sm:grid-cols-[28mm_1fr]"
+            aria-labelledby="projects-heading"
+          >
+            <h2 id="projects-heading" className="text-sm font-semibold">
+              프로젝트
+            </h2>
+            <div>
+              <h3 className="text-sm font-medium">프로젝트명</h3>
+              <Paragraph
+                typography="t5"
+                className="mt-3 leading-7 text-zinc-500"
+              >
+                해결한 문제, 기여한 부분, 결과를 작성해 주세요.
+              </Paragraph>
+            </div>
+          </section>
+          <section
+            className="grid gap-3 sm:grid-cols-[28mm_1fr]"
+            aria-labelledby="education-heading"
+          >
+            <h2 id="education-heading" className="text-sm font-semibold">
+              학력
+            </h2>
+            <Paragraph typography="t5" className="leading-7 text-zinc-500">
+              학교명 · 전공 · 재학 기간
+            </Paragraph>
+          </section>
         </div>
-      </main>
-    </div>
+      </A4Page>
+    </A4Layout>
   );
 }
