@@ -3,19 +3,6 @@ import type { ResumeExperienceProps } from "./resume-experience";
 import type { ResumeHeaderProps } from "./resume-header";
 import type { ResumeEducationItem } from "./resume-education";
 
-export type ResumePortfolioProject = {
-  name: string;
-  period: string;
-  type: string;
-  description: string;
-  contribution: string;
-  techStack: string[];
-  roles: string[];
-  teamSize?: number;
-  contributionRate?: number;
-  link?: string;
-};
-
 // 참고: ../info/data/info.ts, career.ts, portfolios.ts 및 content/portfolio/의 상세 기록
 export const resumeHeader: ResumeHeaderProps = {
   name: "김영진",
@@ -137,10 +124,28 @@ export const resumeExperiences: ResumeExperienceProps[] = [
         period: "2025.05 ~ 2026.05",
         projects: [
           {
+            name: "AI 기반 프로젝트·서비스 기획 관리 도구",
+            description:
+              "프로젝트 진행 상황과 서비스 기획 문서를 작성하고 공유하는 내부 협업 도구입니다.",
+            contribution:
+              "프로젝트와 기획 문서를 업무 단위로 묶는 구조를 정하고 UI와 데이터 모델을 설계했습니다. 코드의 95% 이상은 AI 에이전트로 작성했으며, 결과가 작업마다 달라지는 문제를 줄이기 위해 개발 규칙과 디자인 기준을 문서로 만들고 생성된 코드와 주요 로직을 검수했습니다.",
+            techStack: ["Angular", "Prisma", "PostgreSQL", "Nx", "Nest.js"],
+          },
+          {
             name: "사진 미션 리워드 서비스",
             description:
               "사용자가 사진 촬영 미션을 완료하면 리워드를 받을 수 있는 서비스를 개발했습니다.",
-            techStack: ["Nx", "Angular", "Nest.js", "PostgreSQL", "Prisma"],
+            contribution:
+              "모바일 앱에서 사진 촬영, 미션 제출, 리워드 확인 기능을 개발했습니다. 미션 조건과 참여 결과를 관리하는 웹 관리자와 리워드 처리 API도 맡았습니다.",
+            techStack: [
+              "Nx",
+              "Angular",
+              "Nest.js",
+              "PostgreSQL",
+              "Prisma",
+              "Capacitor",
+            ],
+            link: "https://zikssion.com/login",
           },
         ],
       },
@@ -150,6 +155,80 @@ export const resumeExperiences: ResumeExperienceProps[] = [
           "팀원들을 관리하고 프로젝트를 총괄하며, 개발과 설계, 배포와 유지보수까지 담당했습니다.",
         period: "2023.10 ~ 2025.04",
         projects: [
+          {
+            name: "말이랑 — 언어치료 플랫폼",
+            description:
+              "언어치료 관련 기능을 웹과 iOS·Android 앱으로 제공하고, 관리자가 치료 데이터와 회원 정보를 관리하는 서비스입니다.",
+            contribution:
+              "웹과 iOS·Android 앱의 사용자 기능을 개발했습니다. 치료 데이터를 공통으로 사용할 수 있도록 데이터베이스와 API를 설계하고 운영 관리자 기능을 구현했습니다.",
+            techStack: [
+              "Prisma",
+              "PostgreSQL",
+              "Nest.js",
+              "Angular",
+              "Nx",
+              "Capacitor",
+            ],
+            link: "https://malirang.com/",
+          },
+          {
+            name: "Google Maps 기반 베트남 여행 예약 플랫폼",
+            description:
+              "베트남 여행 상품을 위치 기반으로 탐색하고 예약할 수 있는 사용자 웹과 운영 관리자 시스템입니다.",
+            contribution:
+              "Google Maps API를 연동해 지도에서 장소와 여행 상품을 찾는 화면을 만들었습니다. 예약 기능과 상품·예약 관리자, 관련 백엔드 API를 개발했습니다.",
+            techStack: ["Prisma", "PostgreSQL", "Nest.js", "Angular", "Nx"],
+          },
+          {
+            name: "바디체크 — 신체 기록 관리 서비스",
+            description:
+              "사용자가 모바일에서 신체 기록을 관리하고, 운영자가 웹 관리자에서 회원과 서비스 데이터를 확인하는 건강관리 서비스입니다.",
+            contribution:
+              "사용자가 신체 기록을 입력하고 조회하는 웹·모바일 화면과 회원 관리 기능, 백엔드 API를 개발했습니다. 소셜 로그인을 연동하고 iOS·Android 앱 빌드와 스토어 출시를 담당했습니다.",
+            techStack: [
+              "Nest.js",
+              "PostgreSQL",
+              "Prisma",
+              "React",
+              "React Native",
+            ],
+            link: "https://play.google.com/store/apps/details?id=com.apayu.application&hl=ko",
+          },
+          {
+            name: "헬로 유니콘 웹/앱",
+            description:
+              "사용자용 웹과 iOS·Android 앱, 운영 관리자까지 함께 개발한 프로젝트입니다.",
+            contribution:
+              "사용자 화면과 관리자, 백엔드 API, 소셜 로그인을 개발하고 모바일 앱을 배포했습니다. AWS S3·EC2·Load Balancer·CloudFront로 파일 전송과 서버 운영 환경을 구성했습니다.",
+            techStack: [
+              "Nx",
+              "Prisma",
+              "Angular",
+              "PostgreSQL",
+              "Nest.js",
+              "Capacitor",
+              "Ionic",
+              "AWS",
+            ],
+            link: "https://hellounicorn.site/",
+          },
+          {
+            name: "광주스타트업플랫폼",
+            description:
+              "광주 지역의 창업 지원 정보와 소식을 제공하는 공공 웹사이트입니다.",
+            contribution:
+              "창업 지원 정보와 소식을 조회하는 사용자 화면을 만들었습니다. 게시물 등록·수정·노출 관리 기능과 콘텐츠 조회 API를 개발했습니다.",
+            techStack: ["Nest.js", "PostgreSQL", "Angular", "Prisma", "Nx"],
+            link: "https://gwangju-startup.kr/",
+          },
+          {
+            name: "여행 상품·콘텐츠 운영 플랫폼",
+            description:
+              "사용자에게 여행 상품 정보를 제공하고 운영자가 상품과 게시 콘텐츠를 관리하는 웹 서비스입니다.",
+            contribution:
+              "여행 상품 목록과 상세 화면을 만들고 상품·게시물 등록 및 노출을 관리하는 관리자 기능을 개발했습니다. 관련 데이터베이스와 API 설계도 담당했습니다.",
+            techStack: ["Nx", "Angular", "Prisma", "PostgreSQL", "Nest.js"],
+          },
           {
             name: "Angular 기반 사내 디자인 시스템",
             description:
@@ -209,6 +288,38 @@ export const resumeExperiences: ResumeExperienceProps[] = [
         description:
           "SI 프로젝트에서 요구사항 정리부터 화면·데이터 설계, 웹·모바일·API 개발, 배포와 유지보수까지 담당했습니다.",
         projects: [
+          {
+            name: "아동 학습 미니게임 서비스",
+            description:
+              "아동이 미니게임으로 학습하고 보호자와 관리자가 학습 결과를 확인하는 웹·모바일 서비스입니다.",
+            contribution:
+              "모바일 앱 구조와 주요 화면을 개발했습니다. Phaser 3로 미니게임 4종을 만들고 게임 결과를 저장하고 조회하는 백엔드 기능을 구현했습니다.",
+            techStack: [
+              "Nx",
+              "Angular",
+              "Prisma",
+              "PostgreSQL",
+              "Nest.js",
+              "Phaser3",
+              "Capacitor",
+            ],
+          },
+          {
+            name: "구글 Ads 기반 마케팅 업무 시스템",
+            description:
+              "Google Ads 인증을 위해 개발한 내부 관리자 웹 시스템입니다.",
+            contribution:
+              "Angular 프로젝트의 기본 구조를 잡고 표, 검색 조건, 입력 화면 등 관리자에서 반복해서 사용하는 공통 컴포넌트를 만들었습니다.",
+            techStack: ["Angular"],
+          },
+          {
+            name: "광고 통합 관리 시스템",
+            description:
+              "Google·Meta·Naver의 광고 데이터를 한 화면에서 조회하는 내부 관리 서비스입니다.",
+            contribution:
+              "프로젝트 요구사항에 맞춰 사내에서 처음으로 Vue·Nuxt를 도입하고 프론트엔드 기본 구조를 만들었습니다. Pinia로 상태를 관리하고 여러 화면에서 사용하는 공통 컴포넌트를 개발했습니다.",
+            techStack: ["Vue", "Nuxt", "Pinia"],
+          },
           {
             name: "웹·모바일 서비스 개발",
             description:
@@ -284,220 +395,5 @@ export const resumeEducation: ResumeEducationItem[] = [
     major: "컴퓨터과학과",
     period: "2023.03 ~ 2026.08",
     description: "컴퓨터과학과 학사 졸업",
-  },
-];
-
-export const resumePortfolios: ResumePortfolioProject[] = [
-  {
-    name: "AI 기반 프로젝트·서비스 기획 관리 도구",
-    period: "2026.02 —",
-    type: "웹",
-    description:
-      "프로젝트 진행 상황과 서비스 기획 문서를 작성하고 공유하는 내부 협업 도구입니다.",
-    contribution:
-      "프로젝트와 기획 문서를 업무 단위로 묶는 구조를 정하고 UI와 데이터 모델을 설계했습니다. 코드의 95% 이상은 AI 에이전트로 작성했으며, 결과가 작업마다 달라지는 문제를 줄이기 위해 개발 규칙과 디자인 기준을 문서로 만들고 생성된 코드와 주요 로직을 검수했습니다.",
-    techStack: ["Angular", "Prisma", "PostgreSQL", "Nx", "Nest.js"],
-    roles: ["프론트엔드 개발", "백엔드 개발", "데이터베이스 설계", "UI 디자인"],
-    teamSize: 2,
-    contributionRate: 50,
-  },
-  {
-    name: "사진 미션 리워드 서비스",
-    period: "2025.07 — 2025.09",
-    type: "웹·앱·관리자",
-    description:
-      "사용자가 사진 촬영 미션을 완료하면 리워드를 받을 수 있는 서비스입니다. 관리자는 미션과 참여 내역을 확인합니다.",
-    contribution:
-      "모바일 앱에서 사진 촬영, 미션 제출, 리워드 확인 기능을 개발했습니다. 미션 조건과 참여 결과를 관리하는 웹 관리자와 리워드 처리 API도 맡았습니다.",
-    techStack: [
-      "Nx",
-      "Angular",
-      "Nest.js",
-      "PostgreSQL",
-      "Prisma",
-      "Capacitor",
-    ],
-    roles: [
-      "프론트엔드 개발",
-      "백엔드 개발",
-      "데이터베이스 설계",
-      "모바일 앱 개발",
-    ],
-    teamSize: 2,
-    contributionRate: 80,
-    link: "https://zikssion.com/login",
-  },
-  {
-    name: "말이랑 — 언어치료 플랫폼",
-    period: "2024.12 — 2025.12",
-    type: "웹·iOS·Android",
-    description:
-      "언어치료 관련 기능을 웹과 iOS·Android 앱으로 제공하고, 관리자가 치료 데이터와 회원 정보를 관리하는 서비스입니다.",
-    contribution:
-      "웹과 iOS·Android 앱의 사용자 기능을 개발했습니다. 치료 데이터를 공통으로 사용할 수 있도록 데이터베이스와 API를 설계하고 운영 관리자 기능을 구현했습니다.",
-    techStack: [
-      "Prisma",
-      "PostgreSQL",
-      "Nest.js",
-      "Angular",
-      "Nx",
-      "Capacitor",
-    ],
-    roles: [
-      "프론트엔드 개발",
-      "백엔드 개발",
-      "데이터베이스 설계",
-      "모바일 앱 개발",
-    ],
-    teamSize: 3,
-    contributionRate: 70,
-    link: "https://malirang.com/",
-  },
-  {
-    name: "Google Maps 기반 베트남 여행 예약 플랫폼",
-    period: "2024.10 — 2024.11",
-    type: "웹",
-    description:
-      "베트남 여행 상품을 위치 기반으로 탐색하고 예약할 수 있는 사용자 웹과 운영 관리자 시스템입니다.",
-    contribution:
-      "Google Maps API를 연동해 지도에서 장소와 여행 상품을 찾는 화면을 만들었습니다. 예약 기능과 상품·예약 관리자, 관련 백엔드 API를 개발했습니다.",
-    techStack: ["Prisma", "PostgreSQL", "Nest.js", "Angular", "Nx"],
-    roles: [
-      "프론트엔드 개발",
-      "백엔드 개발",
-      "데이터베이스 설계",
-      "외부 API 연동",
-    ],
-    teamSize: 2,
-    contributionRate: 60,
-  },
-  {
-    name: "바디체크 — 신체 기록 관리 서비스",
-    period: "2024.07 — 2024.09",
-    type: "웹·iOS·Android",
-    description:
-      "사용자가 모바일에서 신체 기록을 관리하고, 운영자가 웹 관리자에서 회원과 서비스 데이터를 확인하는 건강관리 서비스입니다.",
-    contribution:
-      "사용자가 신체 기록을 입력하고 조회하는 웹·모바일 화면과 회원 관리 기능, 백엔드 API를 개발했습니다. 소셜 로그인을 연동하고 iOS·Android 앱 빌드와 스토어 출시를 담당했습니다.",
-    techStack: ["Nest.js", "PostgreSQL", "Prisma", "React", "React Native"],
-    roles: [
-      "프론트엔드 개발",
-      "백엔드 개발",
-      "데이터베이스 설계",
-      "외부 API 연동",
-      "모바일 앱 개발",
-      "앱 빌드·스토어 출시",
-    ],
-    teamSize: 2,
-    contributionRate: 70,
-    link: "https://play.google.com/store/apps/details?id=com.apayu.application&hl=ko",
-  },
-  {
-    name: "헬로 유니콘 웹/앱",
-    period: "2024.04 — 2024.06",
-    type: "웹·iOS·Android",
-    description:
-      "사용자용 웹과 iOS·Android 앱, 운영 관리자까지 함께 개발한 프로젝트입니다.",
-    contribution:
-      "사용자 화면과 관리자, 백엔드 API, 소셜 로그인을 개발하고 모바일 앱을 배포했습니다. AWS S3·EC2·Load Balancer·CloudFront로 파일 전송과 서버 운영 환경을 구성했습니다.",
-    techStack: [
-      "Nx",
-      "Prisma",
-      "Angular",
-      "PostgreSQL",
-      "Nest.js",
-      "Capacitor",
-      "Ionic",
-      "AWS",
-    ],
-    roles: [
-      "프론트엔드 개발",
-      "백엔드 개발",
-      "데이터베이스 설계",
-      "외부 API 연동",
-      "모바일 앱 개발 및 배포",
-      "인프라 구성·배포",
-    ],
-    teamSize: 1,
-    contributionRate: 100,
-    link: "https://hellounicorn.site/",
-  },
-  {
-    name: "광주스타트업플랫폼",
-    period: "2023.12 — 2024.03",
-    type: "웹",
-    description:
-      "광주 지역의 창업 지원 정보와 소식을 제공하는 공공 웹사이트입니다.",
-    contribution:
-      "창업 지원 정보와 소식을 조회하는 사용자 화면을 만들었습니다. 게시물 등록·수정·노출 관리 기능과 콘텐츠 조회 API를 개발했습니다.",
-    techStack: ["Nest.js", "PostgreSQL", "Angular", "Prisma", "Nx"],
-    roles: ["프론트엔드 개발", "백엔드 개발", "데이터베이스 설계"],
-    teamSize: 3,
-    contributionRate: 40,
-    link: "https://gwangju-startup.kr/",
-  },
-  {
-    name: "여행 상품·콘텐츠 운영 플랫폼",
-    period: "2023.10 — 2023.12",
-    type: "웹",
-    description:
-      "사용자에게 여행 상품 정보를 제공하고 운영자가 상품과 게시 콘텐츠를 관리하는 웹 서비스입니다.",
-    contribution:
-      "여행 상품 목록과 상세 화면을 만들고 상품·게시물 등록 및 노출을 관리하는 관리자 기능을 개발했습니다. 관련 데이터베이스와 API 설계도 담당했습니다.",
-    techStack: ["Nx", "Angular", "Prisma", "PostgreSQL", "Nest.js"],
-    roles: ["프론트엔드 개발", "백엔드 개발", "데이터베이스 설계"],
-    teamSize: 3,
-    contributionRate: 40,
-  },
-  {
-    name: "아동 학습 미니게임 서비스",
-    period: "2023.08 — 2023.09",
-    type: "웹·앱",
-    description:
-      "아동이 미니게임으로 학습하고 보호자와 관리자가 학습 결과를 확인하는 웹·모바일 서비스입니다.",
-    contribution:
-      "모바일 앱 구조와 주요 화면을 개발했습니다. Phaser 3로 미니게임 4종을 만들고 게임 결과를 저장하고 조회하는 백엔드 기능을 구현했습니다.",
-    techStack: [
-      "Nx",
-      "Angular",
-      "Prisma",
-      "PostgreSQL",
-      "Nest.js",
-      "Phaser",
-      "Capacitor",
-    ],
-    roles: [
-      "프론트엔드 개발",
-      "백엔드 개발",
-      "데이터베이스 설계",
-      "모바일 앱 개발 및 배포",
-    ],
-    teamSize: 2,
-    contributionRate: 60,
-  },
-  {
-    name: "구글 Ads 기반 마케팅 업무 시스템",
-    period: "2023.04 — 2023.05",
-    type: "웹",
-    description: "Google Ads 인증을 위해 개발한 내부 관리자 웹 시스템입니다.",
-    contribution:
-      "Angular 프로젝트의 기본 구조를 잡고 표, 검색 조건, 입력 화면 등 관리자에서 반복해서 사용하는 공통 컴포넌트를 만들었습니다.",
-    techStack: ["Angular"],
-    roles: ["프론트엔드 개발", "디자인 시스템 구축"],
-    teamSize: 2,
-    contributionRate: 40,
-  },
-  {
-    name: "광고 통합 관리 시스템",
-    period: "2022.09 — 2022.11",
-    type: "웹",
-    description:
-      "Google·Meta·Naver의 광고 데이터를 한 화면에서 조회하는 내부 관리 서비스입니다.",
-    contribution:
-      "프로젝트 요구사항에 맞춰 사내에서 처음으로 Vue·Nuxt를 도입하고 프론트엔드 기본 구조를 만들었습니다. Pinia로 상태를 관리하고 여러 화면에서 사용하는 공통 컴포넌트를 개발했습니다.",
-    techStack: ["Vue", "Nuxt"],
-    roles: ["프론트엔드 개발", "디자인 시스템 구축"],
-    teamSize: 2,
-    contributionRate: 30,
   },
 ];
