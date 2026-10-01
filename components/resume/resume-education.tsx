@@ -2,6 +2,7 @@ import { cn } from "../tailwind-util";
 import { Paragraph } from "../typography/paragraph";
 
 export type ResumeEducationItem = {
+  draft?: boolean;
   name: string;
   major: string;
   period: string;
@@ -9,16 +10,24 @@ export type ResumeEducationItem = {
 };
 
 export type ResumeEducationProps = {
+  /** true이면 학력 섹션 전체를 화면과 인쇄에서 숨깁니다. */
+  draft?: boolean;
   title?: string;
   items: ResumeEducationItem[];
   className?: string;
 };
 
 export function ResumeEducation({
-  title = "학력",
+  draft,
+  title = "Education",
   items,
   className,
 }: ResumeEducationProps) {
+  if (draft) return null;
+
+  const visibleItems = items.filter(item => !item.draft);
+  if (visibleItems.length === 0) return null;
+
   return (
     <section
       data-resume-education
@@ -31,24 +40,23 @@ export function ResumeEducation({
           {title}
         </Paragraph.Text>
       </h2>
-      <div className="mt-6 space-y-5">
-        {items.map((item) => (
+      <div className="mt-8 space-y-8">
+        {visibleItems.map((item) => (
           <div
             key={`${item.name}-${item.period}`}
-            className="print:break-inside-avoid"
+            className="flex flex-col gap-1 print:break-inside-avoid"
           >
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <h3>
-                <Paragraph.Text typography="t4" fontWeight="semibold" className="text-lg/6">
+            <div className="flex flex-wrap items-center gap-3 print:break-after-avoid">
+              <h3 className="print:break-after-avoid">
+                <Paragraph.Text typography="t4" fontWeight="semibold">
                   {item.name}
                 </Paragraph.Text>
               </h3>
-              <Paragraph.Text typography="t6">{item.period}</Paragraph.Text>
+              <Paragraph.Text typography="t6" className="text-gray-700">
+                {item.period}
+              </Paragraph.Text>
             </div>
-            <Paragraph
-              typography="t5"
-              className="mt-2 text-[13px] leading-[1.6] text-zinc-700"
-            >
+            <Paragraph typography="st8" className="text-gray-700">
               {[item.major, item.description].filter(Boolean).join(" · ")}
             </Paragraph>
           </div>
