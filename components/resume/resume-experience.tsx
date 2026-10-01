@@ -46,14 +46,14 @@ export function ResumeExperience({
       <header
         data-a4-block
         data-a4-keep-with-next
-        className="flex flex-wrap items-baseline gap-x-3 gap-y-1"
+        className="flex flex-wrap items-center gap-x-3 gap-y-1"
       >
         <h2 className="print:break-after-avoid">
           <Paragraph.Text typography="t2" fontWeight="bold">
             {company}
           </Paragraph.Text>
         </h2>
-        <Paragraph.Text typography="t6" className="leading-[1.5]">
+        <Paragraph.Text typography="t6" className="text-gray-700">
           {period}
         </Paragraph.Text>
       </header>
@@ -61,18 +61,16 @@ export function ResumeExperience({
       <div className="mt-4 space-y-8">
         {teams.map((team, teamIndex) => (
           <div key={`${team.name}-${teamIndex}`}>
-            <div data-a4-block>
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 print:break-after-avoid">
-                <h3 className="mt-6">
-                  <Paragraph.Text typography="t3" fontWeight="semibold">
-                    {team.name}
-                  </Paragraph.Text>
-                </h3>
-                <Paragraph.Text typography="t6" className="leading-[1.5]">
+            <div data-a4-block className="flex flex-col gap-1 mt-8">
+              <div className="flex flex-wrap items-center gap-3 print:break-after-avoid">
+                <Paragraph.Text typography="t3" fontWeight="semibold">
+                  {team.name}
+                </Paragraph.Text>
+                <Paragraph.Text typography="t6" className="text-gray-700">
                   {team.period}
                 </Paragraph.Text>
               </div>
-              <Paragraph typography="t5" className="mt-2">
+              <Paragraph typography="st8" className="text-gray-700">
                 {team.description}
               </Paragraph>
             </div>
@@ -83,6 +81,7 @@ export function ResumeExperience({
                   data-a4-block
                   data-a4-break-before={project.pageBreakBefore || undefined}
                   key={`${project.name}-${projectIndex}`}
+                  className="flex flex-col gap-2"
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 print:break-after-avoid">
                     <h4 className="border-l-2 border-black pl-1.5">
@@ -100,14 +99,11 @@ export function ResumeExperience({
                       </Paragraph.Text>
                     </h4>
                   </div>
-                  <Paragraph typography="t6" className="mt-2">
+                  <Paragraph typography="st9" className="text-gray-700">
                     {project.description}
                   </Paragraph>
                   {!!project.techStack?.length && (
-                    <Paragraph
-                      typography="t6"
-                      className="mt-1 leading-[1.5] text-zinc-400"
-                    >
+                    <Paragraph typography="st9" className="text-zinc-400">
                       {project.techStack.join(", ")}
                     </Paragraph>
                   )}
@@ -119,7 +115,7 @@ export function ResumeExperience({
                           <div key={`${achievement.title}-${achievementIndex}`}>
                             <h5 className="print:break-after-avoid">
                               <Paragraph.Text
-                                typography="t5"
+                                typography="st8"
                                 fontWeight="medium"
                               >
                                 {achievement.title}
@@ -128,7 +124,8 @@ export function ResumeExperience({
                             <ul className="mt-1 list-disc space-y-1">
                               {achievement.items.map((item, itemIndex) => (
                                 <Paragraph
-                                  typography="t5"
+                                  key={`${item}-${itemIndex}`}
+                                  typography="st8"
                                   fontWeight="regular"
                                   className="text-gray-800"
                                 >
