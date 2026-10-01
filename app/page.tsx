@@ -25,8 +25,8 @@ export default function Home() {
         <ResumeHeader {...resumeHeader} />
 
         <div className="mt-12 space-y-14">
-          {resumeExperiences.map((experience) => (
-            <ResumeExperience key={experience.company} {...experience} />
+          {resumeExperiences.map((experience, index) => (
+            <ResumeExperience key={index} {...experience} />
           ))}
           <ResumeActivities {...resumeActivities} />
           <ResumeEducation items={resumeEducation} />

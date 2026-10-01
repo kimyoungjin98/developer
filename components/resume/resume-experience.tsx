@@ -58,12 +58,12 @@ export function ResumeExperience({
         </Paragraph.Text>
       </header>
 
-      <div className="mt-6 space-y-8">
+      <div className="mt-4 space-y-8">
         {teams.map((team, teamIndex) => (
           <div key={`${team.name}-${teamIndex}`}>
             <div data-a4-block>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 print:break-after-avoid">
-                <h3>
+                <h3 className="mt-6">
                   <Paragraph.Text typography="t3" fontWeight="semibold">
                     {team.name}
                   </Paragraph.Text>
@@ -72,10 +72,7 @@ export function ResumeExperience({
                   {team.period}
                 </Paragraph.Text>
               </div>
-              <Paragraph
-                typography="t5"
-                className="mt-2 text-[13px] leading-[1.6]"
-              >
+              <Paragraph typography="t5" className="mt-2">
                 {team.description}
               </Paragraph>
             </div>
@@ -89,11 +86,7 @@ export function ResumeExperience({
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 print:break-after-avoid">
                     <h4 className="border-l-2 border-black pl-1.5">
-                      <Paragraph.Text
-                        typography="t4"
-                        fontWeight="semibold"
-                        className="text-lg/6"
-                      >
+                      <Paragraph.Text typography="t4" fontWeight="semibold">
                         {project.link ? (
                           <a
                             href={project.link}
@@ -107,10 +100,7 @@ export function ResumeExperience({
                       </Paragraph.Text>
                     </h4>
                   </div>
-                  <Paragraph
-                    typography="t5"
-                    className="mt-2 text-[13px] leading-[1.6]"
-                  >
+                  <Paragraph typography="t6" className="mt-2">
                     {project.description}
                   </Paragraph>
                   {!!project.techStack?.length && (
@@ -122,22 +112,6 @@ export function ResumeExperience({
                     </Paragraph>
                   )}
 
-                  {project.contribution && (
-                    <div className="mt-4">
-                      <h5 className="print:break-after-avoid">
-                        <Paragraph.Text typography="t5" fontWeight="semibold">
-                          기여 내용
-                        </Paragraph.Text>
-                      </h5>
-                      <Paragraph
-                        typography="t5"
-                        className="mt-1 text-[13px] leading-[1.6]"
-                      >
-                        {project.contribution}
-                      </Paragraph>
-                    </div>
-                  )}
-
                   {!!project.achievements?.length && (
                     <div className="mt-4 space-y-3">
                       {project.achievements.map(
@@ -146,24 +120,21 @@ export function ResumeExperience({
                             <h5 className="print:break-after-avoid">
                               <Paragraph.Text
                                 typography="t5"
-                                fontWeight="semibold"
+                                fontWeight="medium"
                               >
                                 {achievement.title}
                               </Paragraph.Text>
                             </h5>
-                            <ul className="mt-1 list-disc space-y-1 pl-3.5 marker:text-black">
+                            <ul className="mt-1 list-disc space-y-1">
                               {achievement.items.map((item, itemIndex) => (
-                                <li
-                                  key={`${itemIndex}-${item}`}
-                                  className="text-[13px]/[1.6]"
+                                <Paragraph
+                                  typography="t5"
+                                  fontWeight="regular"
+                                  className="text-gray-800"
                                 >
-                                  <Paragraph
-                                    typography="t5"
-                                    className="text-[13px] leading-[1.6]"
-                                  >
-                                    {item}
-                                  </Paragraph>
-                                </li>
+                                  <span className="mr-2">•</span>
+                                  {item}
+                                </Paragraph>
                               ))}
                             </ul>
                           </div>
