@@ -43,6 +43,7 @@ export function ResumeEducation({
       <div className="mt-8 space-y-8">
         {visibleItems.map((item) => (
           <div
+            data-a4-atomic
             key={`${item.name}-${item.period}`}
             className="flex flex-col gap-1 print:break-inside-avoid"
           >

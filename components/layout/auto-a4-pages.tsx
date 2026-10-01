@@ -37,8 +37,13 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
         return copy;
       };
 
-      for (const block of blocks) {
-        copyParent(block.element.parentElement!).append(block.element.cloneNode(true));
+      for (const [index, block] of blocks.entries()) {
+        const copy = block.element.cloneNode(true) as HTMLElement;
+        if (index === 0) {
+          copy.style.marginTop = "0";
+          copy.style.marginBlockStart = "0";
+        }
+        copyParent(block.element.parentElement!).append(copy);
       }
     };
 
@@ -86,9 +91,17 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
       };
       let page = createPage();
       let placed: Block[] = [];
-      const fits = () => page.scrollHeight <= page.clientHeight + 1;
+      const fits = () => {
+        const bottom = page.getBoundingClientRect().bottom
+          - parseFloat(getComputedStyle(page).paddingBottom);
+        return page.scrollHeight <= page.clientHeight + 1
+          && [...page.children].every(element => element.getBoundingClientRect().bottom <= bottom + 1);
+      };
       const expandBlock = (index: number) => {
         const block = blocks[index];
+        // 제목·본문·프로필·명시적인 묶음은 내부 요소로 잘게 나누지 않습니다.
+        if (block.element.hasAttribute("data-a4-atomic")
+          || /^(H[1-6]|P|LI|SPAN|A|IMG|SVG|HEADER)$/.test(block.element.tagName)) return false;
         const children = [...block.element.children] as HTMLElement[];
         const hasText = [...block.element.childNodes].some(node =>
           node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim());
@@ -96,6 +109,8 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
         const replacements = children.map((element, childIndex) => ({
           element,
           keepWithNext: /^H[1-6]$/.test(element.tagName)
+            || (!!element.querySelector("h1,h2,h3,h4,h5,h6")
+              && !element.querySelector("p,ul,ol"))
             || element.hasAttribute("data-a4-keep-with-next")
             || (childIndex === children.length - 1 && block.keepWithNext),
         }));
@@ -119,6 +134,9 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
           continue;
         }
 
+        // 남은 공간부터 채웁니다. 통째로 다음 장에 넘기기 전에 항목 단위로 분할합니다.
+        if (expandBlock(end - 1)) continue;
+
         if (placed.length) {
           renderBlocks(page, placed);
           page = createPage();
@@ -128,11 +146,9 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
 
         // 제목과 다음 항목을 묶어도 한 장을 넘으면 더 작은 단위로 다시 배치합니다.
         if (group.length > 1) {
-          if (expandBlock(end - 1)) continue;
           blocks[index].keepWithNext = false;
           continue;
         }
-        if (expandBlock(index)) continue;
 
         // 분할할 수 없는 큰 이미지·문단은 잘라 숨기지 않고 인쇄의 자연 분할을 사용합니다.
         page.style.height = "auto";

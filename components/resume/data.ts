@@ -72,10 +72,20 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                 ],
               },
               {
+                title: "주요 기능 개발",
+                items: [
+                  "로그인 및 회원 관리, 워크스페이스 관리, 정산 관리 등 사내 ERP의 핵심 기능을 개발했습니다.",
+                  "Nestjs Guard와 Decorator를 활용하여 권한과 역할에 따른 접근 제어를 구현했습니다.",
+                  "ApexCharts를 사용하여 인력 통계, 정산 데이터 등을 시각화하는 차트를 개발했습니다.",
+                  "영업팀이 엑셀로 사용하던 장부 로직(계산식 등)을 ERP에 구현하고 견적서를 자동 생성하는 기능을 개발하여 생산성을 높였습니다.",
+                  "Slack/Discord 웹훅을 연동하여 ERP에서 발생하는 이벤트를 알림으로 전송하는 기능을 개발하여 사원들이 이벤트를 빠르게 확인할 수 있도록 개발했습니다.",
+                ],
+              },
+              {
                 title: "공통 처리 구조와 외부 서비스 연동",
                 items: [
                   "OpenAPI 명세와 Orval로 API 호출 코드를 자동 생성하고 TanStack Query로 호출 상태를 관리했습니다.",
-                  "NestJS 데코레이터·인터셉터·핸들러로 알림·로그 이벤트 선언과 실행 처리를 분리했습니다.",
+                  "NestJS 데코레이터·인터셉터·핸들러로 알림·로그 이벤트 선언과 실행 처리를 간편하게 구현하여, 개발자가 핵심 로직에 집중할 수 있도록 지원했습니다.",
                 ],
               },
               {
@@ -88,26 +98,13 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                 title: "MCP 서버 구축",
                 items: [
                   "MCP 서버를 구축하여 사용자가 ChatGPT 또는 CLAUDE와 대화하며 업무를 처리할 수 있는 기능을 구현하여 사용성을 높였습니다.",
-                ],
-              },
-            ],
-          },
-          {
-            name: "사내 서버 구축",
-            description: "사내 서버를 구축하고 배포·운영을 담당했습니다.",
-            techStack: ["AWS", "Docker", "Coolify", "GitHub Actions"],
-            achievements: [
-              {
-                title: "서버 구축",
-                items: [
-                  "Docker와 Coolify를 사용하여 서비스를 컨테이너화하고 배포했습니다.",
-                  "보안 그룹을 설정하여 외부 접근을 제한하고, SSH 키를 사용하여 안전하게 서버에 접속하도록 구성했습니다.",
+                  "MCP 연동 가이드를 작성하여 개발자가 아닌 사원도 쉽게 MCP 서버를 연동할 수 있도록 지원했습니다.",
                 ],
               },
               {
-                title: "공격 방지",
+                title: "가이드 문서 작성",
                 items: [
-                  "fail2ban을 설치하여 SSH 공격을 방지하고, UFW를 사용하여 불필요한 포트를 차단했습니다.",
+                  "사내 ERP를 처음 사용하는 사원들을 위해 GitBook을 활용한 사용자 가이드 문서를 작성하여, 사원들이 ERP를 쉽게 사용할 수 있도록 지원했습니다.",
                 ],
               },
             ],
@@ -131,6 +128,32 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                 items: [
                   "복잡하게 얽혀있던 사용자 권한 로직을 개선하여 정산 및 발주 기능의 API 호출 시간을 약 2초 가량 단축했습니다.",
                   "외부 API의 서비스 종료로 인한 대응을 위해, 새로운 API를 연동하고 관련 기능을 개선했습니다.",
+                ],
+              },
+              {
+                title: "배포 스크립트 개선",
+                items: [
+                  "기존 배포시에는 서버에 접속하여 수동으로 명령어를 입력해야 했던 배포 과정을, GitHub Actions를 활용하여 자동화 하였습니다.",
+                ],
+              },
+            ],
+          },
+          {
+            name: "사내 서버 구축",
+            description: "사내 서버를 구축하고 배포·운영을 담당했습니다.",
+            techStack: ["AWS", "Docker", "Coolify", "GitHub Actions"],
+            achievements: [
+              {
+                title: "서버 구축",
+                items: [
+                  "Docker와 Coolify를 사용하여 서비스를 컨테이너화하고 배포했습니다.",
+                  "보안 그룹을 설정하여 외부 접근을 제한하고, SSH 키를 사용하여 안전하게 서버에 접속하도록 구성했습니다.",
+                ],
+              },
+              {
+                title: "공격 방지",
+                items: [
+                  "fail2ban을 설치하여 SSH 공격을 방지하고, UFW를 사용하여 불필요한 포트를 차단했습니다.",
                 ],
               },
             ],
@@ -183,21 +206,21 @@ export const resumeExperiences: ResumeExperienceProps[] = [
               "개발자들의 작업 효율을 높이기 위해 개발 환경을 개선했습니다.",
             achievements: [
               {
-                title: "NX 기반 모노레포 전환",
+                title: "Nx 기반 모노레포 전환",
                 items: [
-                  "기존 '멀티 레포' 방식에 '서버와 클라이언트 모두 JS/TS 기반인데 굳이 멀티 레포를 고집할 이유가 있을까?' 라는 의문을 느끼고, NX 기반의 모노레포로 전환했습니다.",
-                  "NX 기반 모노레포로 전환하면서, 공통 코드와 유틸리티를 공유하고, 빌드와 배포를 효율적으로 관리할 수 있게 되었습니다.",
+                  "기존 '멀티 레포' 방식에 의문을 느끼고, Turborepo / Yarn workspace / Nx Monorepo 등을 검토하였는데 Nx가 Angular 친화적이고 개발자들이 쉽게 접근할 수 있는 구조라고 판단하여 Nx 기반 모노레포로 전환했습니다.",
+                  "Nx 기반 모노레포로 전환하면서, 공통 인터페이스와 유틸리티를 공유하고, 빌드와 배포를 효율적으로 관리할 수 있게 되었습니다.",
                 ],
               },
               {
                 title: "서브모듈 방식의 레포 통합",
                 items: [
                   "모노레포로 전환하면서 타입/인터페이스 등 'Git Submodule'으로 관리하던 방식을 제거하고, 모노레포의 라이브러리 방식으로 통합했습니다.",
-                  "이로 인해 기존 DTO 하나 수정할 때마다 3~5분 이상의 병목이 생기던 문제를 해결하고, 개발자들의 작업 효율을 높였습니다.",
+                  "이로 인해 기존 DTO 하나 수정할 때마다 3~5분 이상의 병목이 생기던 문제를 1분내로 단축하여 해결하고, 개발자들의 작업 효율을 높였습니다.",
                 ],
               },
             ],
-            techStack: ["NX", "Angular", "Nest.js", "PostgreSQL", "Prisma"],
+            techStack: ["Nx", "Angular", "Nest.js", "PostgreSQL", "Prisma"],
           },
           {
             name: "Angular 기반 사내 디자인 시스템",
@@ -211,6 +234,30 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                   "타사의 UI 또는 디자인 시스템을 참고하여, 프로젝트에서 반복되는 UI를 정리하고 공통 컴포넌트와 디자인 규칙을 정의했습니다.",
                   "사내에서 자주 사용하던 프레임워크인 'Ionic Framework'의 네이밍을 참조해 컴포넌트 이름을 정의하여 개발자들이 쉽게 이해하고 사용할 수 있도록 진행했습니다.",
                   "Figma를 사용하여 디자인 시안을 만들고, Storybook으로 컴포넌트를 문서화했습니다.",
+                ],
+              },
+              {
+                title: "컴포넌트 개발",
+                items: [
+                  "25개 가량의 공통 컴포넌트를 개발 및 유지보수 했습니다.",
+                  "PR 리뷰를 통해 누구나 컴포넌트 개발에 기여를 할 수 있도록 개발 프로세스를 개선했습니다.",
+                ],
+              },
+              {
+                title: "Data Grid 개발",
+                items: [
+                  "SI 프로젝트 특성상 자주 사용되는 Data Grid 컴포넌트를 Ag-Grid를 레퍼런스 삼아서 개발했습니다.",
+                  "Ag-Grid의 복잡한 API를 단순화하고, 사내에서 자주 사용되는 기능을 기본으로 제공하여 개발자들이 쉽게 사용할 수 있도록 개발했습니다.",
+                  "Client Side Pagination 방식으로 개발하였고 추후 Server Side Pagination 방식으로 전환하여 대용량 데이터 처리에 대응할 수 있도록 개선했습니다.",
+                  "개발된 Data Grid 컴포넌트는 여러 프로젝트에서 재사용되어 개발 시간을 단축하고 일관성을 유지할 수 있게 되었습니다.",
+                ],
+              },
+              {
+                title: "Calendar 컴포넌트 개발",
+                items: [
+                  "노션의 Calendar를 벤치마킹한 Calendar 컴포넌트를 개발했습니다.",
+                  "Angular FullCalendar를 레퍼런스로 삼아 개발하였고, 여러 프로젝트에서 사용할 수 있도록 설계하였습니다.",
+                  "Calendar 컴포넌트는 일정 등록, 수정, 삭제 기능을 제공하며, 다양한 뷰(월간, 주간, 일간)를 지원하도록 개발했습니다.",
                 ],
               },
               {
@@ -254,9 +301,8 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                 ],
               },
               {
-                title: "일정 캘린더 개발",
+                title: "일정 관리 개발",
                 items: [
-                  "Angular FullCalendar를 활용하여 일정을 관리하는 캘린더 기능을 개발하였습니다.",
                   "필터링, 일정 반복 생성, 일정 드래그 앤 드롭 등의 복잡한 기능을 구현하고, Nest.js API와 연동하여 데이터를 관리하였습니다.",
                 ],
               },
@@ -299,6 +345,19 @@ export const resumeExperiences: ResumeExperienceProps[] = [
             ],
             achievements: [
               {
+                title: "앱 개발",
+                items: [
+                  "Capacitor와 Ionic을 사용하여 A/S 접수·처리 현황을 제공하는 앱을 개발했습니다.",
+                ],
+              },
+              {
+                title: "어드민 개발",
+                items: [
+                  "앱에서 제공하는 A/S 접수·처리 현황을 관리하는 어드민 페이지를 개발했습니다.",
+                  "협력업체/단지/공종/위치 등 다양한 API와 연동하여 A/S 접수·처리 현황을 조회하고 관리할 수 있는 기능을 개발했습니다.",
+                ],
+              },
+              {
                 title: "데이터 시각화",
                 items: [
                   "ApexCharts를 사용하여 A/S 접수·처리 현황을 시각화하는 차트를 개발했습니다.",
@@ -306,7 +365,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                 ],
               },
               {
-                title: "공통 UI 개발",
+                title: "공통 컴포넌트 개발",
                 items: [
                   "Vue와 Nuxt UI를 사용하여 공통 UI 컴포넌트를 개발하고, 앱과 관리자 화면에서 재사용했습니다.",
                 ],

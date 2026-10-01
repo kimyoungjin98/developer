@@ -49,7 +49,11 @@ function ActivityGroups({ groups }: { groups: ResumeActivityGroup[] }) {
                 key={`${item.title}-${itemIndex}`}
                 className="flex flex-col gap-2 print:break-inside-avoid"
               >
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 print:break-after-avoid">
+                <div
+                  data-a4-atomic
+                  data-a4-keep-with-next={!!(item.description || item.links?.length || item.bullets?.length) || undefined}
+                  className="flex flex-wrap items-center gap-x-3 gap-y-1 print:break-after-avoid"
+                >
                   <Paragraph.Text typography="t4" fontWeight="semibold">
                     {item.title}
                   </Paragraph.Text>
@@ -128,7 +132,10 @@ export function ResumeActivities({
       aria-label={title}
       className={cn("min-w-0 text-black", className)}
     >
-      <header className="flex flex-wrap items-center gap-x-3 gap-y-1 print:break-after-avoid">
+      <header
+        data-a4-keep-with-next
+        className="flex flex-wrap items-center gap-x-3 gap-y-1 print:break-after-avoid"
+      >
         <h2>
           <Paragraph.Text typography="t2" fontWeight="bold">
             {title}
@@ -141,6 +148,7 @@ export function ResumeActivities({
         )}
       </header>
       <div
+        data-a4-atomic={hasTwoColumns || undefined}
         className={cn(
           "mt-8 grid min-w-0 gap-x-8 gap-y-8",
           hasTwoColumns &&

@@ -84,7 +84,12 @@ export function ResumeExperience({
       <div className="mt-4 space-y-8">
         {visibleTeams.map((team, teamIndex) => (
           <div key={`${team.name}-${teamIndex}`}>
-            <div data-a4-block className="flex flex-col gap-1 mt-8">
+            <div
+              data-a4-block
+              data-a4-atomic
+              data-a4-keep-with-next={team.projects.length > 0 || undefined}
+              className="flex flex-col gap-1 mt-8"
+            >
               <div className="flex flex-wrap items-center gap-3 print:break-after-avoid">
                 <Paragraph.Text typography="t3" fontWeight="semibold">
                   {team.name}
