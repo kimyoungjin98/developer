@@ -28,7 +28,8 @@ export function ResumeHeader({
   return (
     <header
       data-resume-header
-      className="grid grid-cols-[64px_minmax(0,1fr)] items-start gap-x-6 gap-y-4 md:grid-cols-[84px_minmax(0,1fr)_max-content] print:break-inside-avoid print:grid-cols-[84px_minmax(0,1fr)_max-content]"
+      data-a4-block
+      className="grid grid-cols-[64px_minmax(0,1fr)] items-start gap-x-6 gap-y-4 @min-[640px]:grid-cols-[84px_minmax(0,1fr)_max-content] print:break-inside-avoid print:grid-cols-[84px_minmax(0,1fr)_max-content]"
     >
       {imageSrc ? (
         <Image
@@ -37,13 +38,13 @@ export function ResumeHeader({
           width={84}
           height={84}
           unoptimized
-          className="size-16 rounded-full object-cover md:size-21 print:size-21"
+          className="size-16 rounded-full object-cover @min-[640px]:size-21 print:size-21"
         />
       ) : (
         <div
           role="img"
           aria-label={`${name} 프로필 사진 자리`}
-          className="flex size-16 items-center justify-center overflow-hidden rounded-full bg-[#dedede] text-[#a3a3a3] md:size-21 print:size-21"
+          className="flex size-16 items-center justify-center overflow-hidden rounded-full bg-[#dedede] text-[#a3a3a3] @min-[640px]:size-21 print:size-21"
         >
           <svg viewBox="0 0 84 84" className="size-full" aria-hidden="true">
             <circle cx="42" cy="31" r="14" fill="currentColor" />
@@ -55,30 +56,30 @@ export function ResumeHeader({
       <div className="min-w-0">
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <Paragraph.Text
-            typography="t3"
-            fontWeight="semibold"
+            typography="t2"
+            fontWeight="medium"
             className="text-zinc-900"
           >
             {name}
           </Paragraph.Text>
-          <Paragraph.Text typography="t6" className="text-zinc-800">
+          <Paragraph.Text typography="t5" className="text-zinc-800">
             {role}
           </Paragraph.Text>
           {caption && (
-            <Paragraph.Text typography="t7" className="text-zinc-500">
+            <Paragraph.Text typography="t6" className="text-zinc-500">
               {caption}
             </Paragraph.Text>
           )}
         </div>
         <Paragraph
-          typography="t7"
-          className="mt-2.5 leading-[1.5] whitespace-pre-line text-zinc-700"
+          typography="t6"
+          className="mt-2.5 leading-[1.6] whitespace-pre-line text-zinc-700"
         >
           {summary}
         </Paragraph>
       </div>
 
-      <dl className="col-start-2 min-w-0 text-[10px]/[15px] text-black md:col-auto md:max-w-[180px] print:col-auto print:max-w-[180px]">
+      <dl className="col-start-2 min-w-0 text-xs/[18px] text-black @min-[640px]:col-auto @min-[640px]:max-w-[220px] print:col-auto print:max-w-[220px]">
         {contacts.map(({ label, value, href }) => {
           const isExternal = /^https?:\/\//.test(href);
           return (

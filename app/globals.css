@@ -29,3 +29,8 @@ body {
   size: A4 portrait;
   margin: 0;
 }
+
+@page resume {
+  size: A4 portrait;
+  margin: 10mm;
+}

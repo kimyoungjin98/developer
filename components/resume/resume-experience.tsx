@@ -11,6 +11,8 @@ export type ExperienceProject = {
   description: string;
   techStack?: string[];
   achievements?: ExperienceAchievement[];
+  /** 자동 배치 대신 이 프로젝트부터 새 A4 페이지를 시작합니다. */
+  pageBreakBefore?: boolean;
 };
 
 export type ExperienceTeam = {
@@ -39,69 +41,88 @@ export function ResumeExperience({
       aria-label={`${company} 경력`}
       className={cn("min-w-0 text-black", className)}
     >
-      <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <header data-a4-block data-a4-keep-with-next className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h2 className="print:break-after-avoid">
-          <Paragraph.Text typography="t3" fontWeight="bold">
+          <Paragraph.Text typography="t2" fontWeight="bold">
             {company}
           </Paragraph.Text>
         </h2>
-        <Paragraph.Text typography="t7" className="leading-[1.5]">
+        <Paragraph.Text typography="t6" className="leading-[1.5]">
           {period}
         </Paragraph.Text>
       </header>
 
-      <div className="mt-6 space-y-6">
+      <div className="mt-6 space-y-8">
         {teams.map((team, teamIndex) => (
           <div key={`${team.name}-${teamIndex}`}>
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 print:break-after-avoid">
-              <h3>
-                <Paragraph.Text typography="t5" fontWeight="semibold">
-                  {team.name}
+            <div data-a4-block>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 print:break-after-avoid">
+                <h3>
+                  <Paragraph.Text typography="t3" fontWeight="semibold">
+                    {team.name}
+                  </Paragraph.Text>
+                </h3>
+                <Paragraph.Text typography="t6" className="leading-[1.5]">
+                  {team.period}
                 </Paragraph.Text>
-              </h3>
-              <Paragraph.Text typography="t7" className="leading-[1.5]">
-                {team.period}
-              </Paragraph.Text>
+              </div>
+              <Paragraph typography="t5" className="mt-2 text-[13px] leading-[1.6]">
+                {team.description}
+              </Paragraph>
             </div>
-            <Paragraph typography="t7" className="mt-1 leading-[1.5]">
-              {team.description}
-            </Paragraph>
 
-            <div className="mt-6 space-y-6">
+            <div className="mt-8 space-y-8">
               {team.projects.map((project, projectIndex) => (
-                <div key={`${project.name}-${projectIndex}`}>
-                  <h4 className="border-l-2 border-black pl-1.5 text-xs/4 print:break-after-avoid">
-                    <Paragraph.Text typography="t6" fontWeight="semibold">
+                <div
+                  data-a4-block
+                  data-a4-break-before={project.pageBreakBefore || undefined}
+                  key={`${project.name}-${projectIndex}`}
+                >
+                  <h4 className="border-l-2 border-black pl-1.5 print:break-after-avoid">
+                    <Paragraph.Text typography="t4" fontWeight="semibold" className="text-lg/6">
                       {project.name}
                     </Paragraph.Text>
                   </h4>
-                  <Paragraph typography="t7" className="mt-3 leading-[1.5]">
+                  <Paragraph typography="t5" className="mt-2 text-[13px] leading-[1.6]">
                     {project.description}
                   </Paragraph>
                   {!!project.techStack?.length && (
-                    <Paragraph typography="t7" className="mt-2 leading-[1.5] text-zinc-400">
+                    <Paragraph
+                      typography="t6"
+                      className="mt-1 leading-[1.5] text-zinc-400"
+                    >
                       {project.techStack.join(", ")}
                     </Paragraph>
                   )}
 
                   {!!project.achievements?.length && (
-                    <div className="mt-3 space-y-1">
-                      {project.achievements.map((achievement, achievementIndex) => (
-                        <div key={`${achievement.title}-${achievementIndex}`}>
-                          <h5 className="text-[10px]/[15px] font-normal print:break-after-avoid">
-                            <Paragraph.Text>{achievement.title}</Paragraph.Text>
-                          </h5>
-                          <ul className="list-disc pl-3.5 marker:text-black">
-                            {achievement.items.map((item, itemIndex) => (
-                              <li key={`${itemIndex}-${item}`} className="text-[10px]/[15px]">
-                                <Paragraph typography="t7" className="leading-[1.5]">
-                                  {item}
-                                </Paragraph>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
+                    <div className="mt-4 space-y-3">
+                      {project.achievements.map(
+                        (achievement, achievementIndex) => (
+                          <div key={`${achievement.title}-${achievementIndex}`}>
+                            <h5 className="print:break-after-avoid">
+                              <Paragraph.Text typography="t5" fontWeight="semibold">
+                                {achievement.title}
+                              </Paragraph.Text>
+                            </h5>
+                            <ul className="mt-1 list-disc space-y-1 pl-3.5 marker:text-black">
+                              {achievement.items.map((item, itemIndex) => (
+                                <li
+                                  key={`${itemIndex}-${item}`}
+                                  className="text-[13px]/[1.6]"
+                                >
+                                  <Paragraph
+                                    typography="t5"
+                                    className="text-[13px] leading-[1.6]"
+                                  >
+                                    {item}
+                                  </Paragraph>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ),
+                      )}
                     </div>
                   )}
                 </div>
