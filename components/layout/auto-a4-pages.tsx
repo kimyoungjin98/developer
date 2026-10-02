@@ -125,7 +125,15 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
         }
         let end = index + 1;
         while (end < blocks.length && blocks[end - 1].keepWithNext
-          && !blocks[end].element.hasAttribute("data-a4-break-before")) end++;
+          && !blocks[end].element.hasAttribute("data-a4-break-before")) {
+          // 제목 뒤에 본문을 포함한 묶음이 붙었으면 다음 제목까지 연결하지 않습니다.
+          // 회사 제목과 직책 소개를 함께 배치한 뒤 프로젝트는 다음 장에서 이어갈 수 있습니다.
+          const previous = blocks[end - 1].element;
+          if (end > index + 1
+            && previous.hasAttribute("data-a4-atomic")
+            && previous.querySelector("p")) break;
+          end++;
+        }
         const group = blocks.slice(index, end);
         renderBlocks(page, [...placed, ...group]);
         if (fits()) {
