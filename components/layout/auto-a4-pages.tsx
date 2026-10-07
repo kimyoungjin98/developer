@@ -6,7 +6,7 @@ import { A4Page } from "./a4-layout";
 type Block = { element: HTMLElement; keepWithNext: boolean };
 
 /** 정적 문서를 data-a4-block 단위로 측정하고 A4 페이지에 배치합니다. */
-export function AutoA4Pages({ children }: { children: ReactNode }) {
+export function AutoA4Pages({ children, documentLabel = "이력서" }: { children: ReactNode; documentLabel?: string }) {
   const sourceRef = useRef<HTMLDivElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
 
@@ -82,7 +82,7 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
         const page = original.cloneNode(false) as HTMLElement;
         page.removeAttribute("data-a4-measure");
         page.setAttribute("data-a4-page", "");
-        page.setAttribute("aria-label", `이력서 ${++pageNumber}페이지`);
+        page.setAttribute("aria-label", `${documentLabel} ${++pageNumber}페이지`);
         page.style.height = "297mm";
         page.style.minHeight = "297mm";
         page.style.aspectRatio = "auto";
@@ -217,7 +217,7 @@ export function AutoA4Pages({ children }: { children: ReactNode }) {
       source.removeEventListener("load", schedule, true);
       document.fonts.removeEventListener("loadingdone", schedule);
     };
-  }, [children]);
+  }, [children, documentLabel]);
 
   return (
     <div data-a4-pagination className="relative min-w-0 w-full">

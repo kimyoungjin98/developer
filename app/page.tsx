@@ -1,6 +1,6 @@
 import { A4Layout } from "@/components/layout/a4-layout";
 import { AutoA4Pages } from "@/components/layout/auto-a4-pages";
-import { PrintButton } from "@/components/layout/print-button";
+import { DocumentToolbar } from "@/components/layout/document-toolbar";
 import {
   resumeActivities,
   resumeEducation,
@@ -15,11 +15,7 @@ import { ResumeHeader } from "@/components/resume/resume-header";
 export default function Home() {
   return (
     <A4Layout
-      toolbar={
-        <div className="flex items-center justify-end w-full print:hidden">
-          <PrintButton />
-        </div>
-      }
+      toolbar={<DocumentToolbar current="resume" />}
     >
       <AutoA4Pages>
         <ResumeHeader {...resumeHeader} />

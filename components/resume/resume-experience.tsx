@@ -11,6 +11,12 @@ export type ExperienceProject = {
   draft?: boolean;
   name: string;
   description: string;
+  period?: string;
+  type?: string;
+  contribution?: string;
+  roles?: string[];
+  teamSize?: number;
+  contributionRate?: number;
   techStack?: string[];
   link?: string;
   achievements?: ExperienceAchievement[];
@@ -127,10 +133,30 @@ export function ResumeExperience({
                           )}
                         </Paragraph.Text>
                       </h4>
+                      {project.period && (
+                        <Paragraph.Text typography="t6" className="text-gray-700">
+                          {project.period}
+                        </Paragraph.Text>
+                      )}
                     </div>
+                    {(project.type || project.roles?.length || project.teamSize !== undefined || project.contributionRate !== undefined) && (
+                      <Paragraph typography="st9" className="text-gray-700">
+                        {[
+                          project.type,
+                          project.roles?.join(", "),
+                          project.teamSize !== undefined ? `개발 ${project.teamSize}명` : undefined,
+                          project.contributionRate !== undefined ? `기여도 ${project.contributionRate}%` : undefined,
+                        ].filter(Boolean).join(" · ")}
+                      </Paragraph>
+                    )}
                     <Paragraph typography="st9" className="text-gray-700">
                       {project.description}
                     </Paragraph>
+                    {project.contribution && (
+                      <Paragraph typography="st8" className="text-gray-800">
+                        {project.contribution}
+                      </Paragraph>
+                    )}
                     {!!project.techStack?.length && (
                       <Paragraph typography="st9" className="text-zinc-400">
                         {project.techStack.join(", ")}
@@ -152,8 +178,8 @@ export function ResumeExperience({
                               </h5>
                               <ul className="mt-1 list-disc space-y-1">
                                 {achievement.items.map((item, itemIndex) => (
+                                  <li key={`${item}-${itemIndex}`} className="list-none">
                                   <Paragraph
-                                    key={`${item}-${itemIndex}`}
                                     typography="st8"
                                     fontWeight="regular"
                                     className="text-gray-800"
@@ -161,6 +187,7 @@ export function ResumeExperience({
                                     <span className="mr-2">•</span>
                                     {item}
                                   </Paragraph>
+                                  </li>
                                 ))}
                               </ul>
                             </div>
