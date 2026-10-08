@@ -2,6 +2,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+이력서와 경력기술서 내용은 `components/resume/data.ts`에서 관리합니다.
+표시할 문자열에 `**강조할 텍스트**`를 작성하면 화면과 인쇄에서 해당 부분이 굵게 표시됩니다.
+
+```ts
+description: "React로 **정산 관리 화면**을 개발했습니다.",
+items: ["조회 시간을 **3초에서 1초로 단축**했습니다."],
+```
+
+`**...**` 강조만 지원하며, 닫히지 않은 표시는 원문 그대로 출력됩니다.
+
 First, run the development server:
 
 ```bash

@@ -1,4 +1,5 @@
 import { cn } from "../../tailwind-util";
+import { renderBoldText } from "../bold-text";
 import {
   ParagraphColor,
   ParagraphFontWeight,
@@ -28,7 +29,7 @@ export function ParagraphText({
       style={style}
       {...rest}
     >
-      {children}
+      {renderBoldText(children)}
     </span>
   );
 }

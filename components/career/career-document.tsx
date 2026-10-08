@@ -1,6 +1,7 @@
 import { ResumeExperience, type ResumeExperienceProps } from "../resume/resume-experience";
 import type { ResumeHeaderProps } from "../resume/resume-header";
 import { Paragraph } from "../typography/paragraph";
+import { renderBoldText } from "../typography/bold-text";
 
 export function CareerDocument({ header, experiences }: {
   header: ResumeHeaderProps;
@@ -39,10 +40,10 @@ export function CareerDocument({ header, experiences }: {
         <dl className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
           {header.contacts.map(contact => (
             <div key={contact.label} className="flex min-w-0 flex-wrap gap-x-1 text-xs leading-4">
-              <dt className="font-semibold">{contact.label}.</dt>
+              <dt className="font-semibold">{renderBoldText(contact.label)}.</dt>
               <dd>
                 <a href={contact.href} className="text-gray-700 underline decoration-zinc-300 underline-offset-4">
-                  {contact.value}
+                  {renderBoldText(contact.value)}
                 </a>
               </dd>
             </div>

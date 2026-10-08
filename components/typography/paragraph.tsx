@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { cn } from "../tailwind-util";
+import { renderBoldText } from "./bold-text";
 import { ParagraphIcon } from "./icon/paragraph-icon";
 import {
   ParagraphColor,
@@ -51,7 +52,7 @@ function ParagraphRoot(
           : style
       }
     >
-      {children}
+      {renderBoldText(children)}
     </p>
   );
 }

@@ -1,4 +1,5 @@
 import { cn } from "../tailwind-util";
+import { renderBoldText } from "../typography/bold-text";
 import { Paragraph } from "../typography/paragraph";
 
 export type ExperienceAchievement = {
@@ -126,7 +127,7 @@ export function ResumeExperience({
                               href={project.link}
                               className="underline decoration-zinc-300 underline-offset-4"
                             >
-                              {project.name}
+                              {renderBoldText(project.name)}
                             </a>
                           ) : (
                             project.name

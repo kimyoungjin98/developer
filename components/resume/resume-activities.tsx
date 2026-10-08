@@ -1,4 +1,5 @@
 import { cn } from "../tailwind-util";
+import { renderBoldText } from "../typography/bold-text";
 import { Paragraph } from "../typography/paragraph";
 
 export type ResumeActivity = {
@@ -81,7 +82,7 @@ function ActivityGroups({ groups }: { groups: ResumeActivityGroup[] }) {
                           }
                           className="underline decoration-zinc-300 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
                         >
-                          {label}
+                          {renderBoldText(label)}
                         </a>
                         {")"}
                       </Paragraph.Text>
