@@ -10,7 +10,7 @@ export const resumeHeader: ResumeHeaderProps = {
   name: "김영진",
   role: "프론트엔드 개발자",
   imageSrc: "me.jpg",
-  summary: `React, Angular, NestJS, TypeScript 기반의 **5년차** 풀스택 기반 프론트엔드 개발자 입니다.
+  summary: `React, Angular, Nestjs, TypeScript 기반의 **5년차** 풀스택 기반 프론트엔드 개발자 입니다.
 
 또한 단순히 기능 구현이 끝이 아니라, 사용자가 서비스를 이용했을 때 
 어떤 경험을 하게 될지까지 고려하며 개발하고 있습니다.`,
@@ -51,7 +51,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
               "사내 ERP를 개발하고 유지보수하며, 사내 업무를 효율적으로 처리할 수 있도록 지원했습니다.",
             techStack: [
               "Next.js",
-              "NestJS",
+              "Nestjs",
               "PostgreSQL",
               "Prisma",
               "TanStack Query",
@@ -77,7 +77,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                   "Slack/Discord 웹훅으로 업무 이벤트 알림을 전송하고, Barobill API로 전자세금계산서 발행·역발행·조회를 구현했습니다.",
                   "PR 검토 프로세스를 도입하고, 컴포넌트 재사용성과 코드 구조가 의도대로 반영되지 않은 경우 개발자에게 피드백을 제공했습니다.",
                   "OpenAPI 명세와 Orval로 API 호출 코드를 자동 생성하고, TanStack Query로 호출 상태를 관리했습니다.",
-                  "NestJS 데코레이터·인터셉터·핸들러로 알림·로그 이벤트의 선언과 실행 처리를 공통화했습니다.",
+                  "Nestjs 데코레이터·인터셉터·핸들러로 알림·로그 이벤트의 선언과 실행 처리를 공통화했습니다.",
                   "MCP 서버를 구축하고 연동 가이드를 작성했으며, GitBook으로 ERP 사용자 가이드를 제공했습니다.",
                 ],
               },
@@ -201,7 +201,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
       {
         name: "개발팀 팀장",
         description:
-          "프로덕트 개발, 사내 개발 환경 구축, 개발자 간 기술 공유를 통해 개발팀의 생산성을 높이고, 개발자들이 효율적으로 작업할 수 있도록 지원했습니다.",
+          "5명 규모의 개발팀을 이끌며, 개발 환경을 개선하고 여러 프로젝트를 기획·개발했습니다.",
         period: "2022.03 ~ 2026.05",
         projects: [
           {
@@ -272,7 +272,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
                 ],
               },
             ],
-            techStack: ["Nx", "Angular", "Nest.js", "PostgreSQL", "Prisma"],
+            techStack: ["Nx", "Angular", "Nestjs", "PostgreSQL", "Prisma"],
           },
           {
             name: "건설사 A/S 앱·관리자 개발",
@@ -281,7 +281,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
             techStack: [
               "Vue",
               "Nuxt UI",
-              "NestJS",
+              "Nestjs",
               "PostgreSQL",
               "Prisma",
               "Capacitor",
@@ -330,7 +330,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
             techStack: [
               "Prisma",
               "PostgreSQL",
-              "Nest.js",
+              "Nestjs",
               "Angular",
               "Nx",
               "Capacitor",
@@ -373,7 +373,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
             name: "AI 기반 프로젝트·서비스 기획 관리 도구",
             description:
               "프로젝트 진행 상황과 서비스 기획 문서를 작성하고 공유하는 내부 협업 도구입니다.",
-            techStack: ["Angular", "Prisma", "PostgreSQL", "Nx", "Nest.js"],
+            techStack: ["Angular", "Prisma", "PostgreSQL", "Nx", "Nestjs"],
             achievements: [
               {
                 title: "문제·요구사항",
@@ -405,7 +405,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
             name: "광주스타트업플랫폼",
             description:
               "광주 지역의 창업 지원 정보와 소식을 제공하는 공공 웹사이트입니다.",
-            techStack: ["Nest.js", "PostgreSQL", "Angular", "Prisma", "Nx"],
+            techStack: ["Nestjs", "PostgreSQL", "Angular", "Prisma", "Nx"],
             link: "https://gwangju-startup.kr/",
             achievements: [
               {
@@ -439,7 +439,7 @@ export const resumeExperiences: ResumeExperienceProps[] = [
               "Angular",
               "Prisma",
               "PostgreSQL",
-              "Nest.js",
+              "Nestjs",
               "Phaser3",
               "Capacitor",
             ],
