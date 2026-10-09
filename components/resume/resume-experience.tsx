@@ -20,6 +20,8 @@ export type ExperienceProject = {
   contributionRate?: number;
   techStack?: string[];
   link?: string;
+  /** 서비스, 앱스토어, 소스 코드 등 여러 링크를 표시합니다. */
+  links?: { label: string; href: string }[];
   achievements?: ExperienceAchievement[];
   /** 자동 배치 대신 이 프로젝트부터 새 A4 페이지를 시작합니다. */
   pageBreakBefore?: boolean;
@@ -59,9 +61,13 @@ export function ResumeExperience({
         .filter(project => !project.draft)
         .map(project => ({
           ...project,
-          achievements: project.achievements?.filter(
-            achievement => !achievement.draft,
-          ),
+          achievements: project.achievements
+            ?.filter(achievement => !achievement.draft)
+            .map(achievement => ({
+              ...achievement,
+              items: achievement.items.filter(item => item.trim().length > 0),
+            }))
+            .filter(achievement => achievement.items.length > 0),
         })),
     }));
 
@@ -141,6 +147,29 @@ export function ResumeExperience({
                           {project.period}
                         </Paragraph.Text>
                       )}
+                      {project.link?.trim() && (
+                        <a
+                          href={project.link.trim()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.name.replace(/\*\*(.+?)\*\*/g, "$1")} 서비스 이동 (새 탭)`}
+                          className="inline-flex items-center gap-1 rounded border border-zinc-300 px-2 py-1 text-xs font-medium text-zinc-700 transition-colors hover:border-black hover:bg-zinc-100 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black print:border-zinc-400"
+                        >
+                          서비스 이동 <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
+                      {project.links?.filter(link => link.href.trim()).map((link, linkIndex) => (
+                        <a
+                          key={`${link.href}-${linkIndex}`}
+                          href={link.href.trim()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.name.replace(/\*\*(.+?)\*\*/g, "$1")} ${link.label || "서비스 이동"} (새 탭)`}
+                          className="inline-flex items-center gap-1 rounded border border-zinc-300 px-2 py-1 text-xs font-medium text-zinc-700 transition-colors hover:border-black hover:bg-zinc-100 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black print:border-zinc-400"
+                        >
+                          {link.label || "서비스 이동"} <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
                     </div>
                     {(project.type || project.roles?.length || project.teamSize !== undefined || project.contributionRate !== undefined) && (
                       <Paragraph typography="st9" className="text-gray-700">

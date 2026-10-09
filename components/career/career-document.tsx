@@ -84,7 +84,7 @@ export function CareerDocument({
               className="border-l-2 border-zinc-300 pl-3"
             >
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <Paragraph.Text typography="st8" fontWeight="semibold">
+                <Paragraph.Text typography="t4" fontWeight="semibold">
                   {experience.company}
                 </Paragraph.Text>
                 <Paragraph.Text typography="t6" className="text-gray-700">
@@ -92,22 +92,22 @@ export function CareerDocument({
                 </Paragraph.Text>
               </div>
               {experience.teams.map((team) => (
-                <div key={`${team.name}-${team.period}`} className="mt-1">
-                  <Paragraph typography="st9" className="text-gray-700">
+                <div key={`${team.name}-${team.period}`} className="mt-2">
+                  <Paragraph typography="st8" fontWeight="medium" className="text-zinc-900">
                     {team.name}
                   </Paragraph>
+                  <ul className="mt-2 list-disc space-y-1 pl-4 marker:text-zinc-400">
                   {(Array.isArray(team.description)
                     ? team.description
                     : [team.description]
                   ).map((description, index) => (
-                    <Paragraph
-                      key={index}
-                      typography="st9"
-                      className="mt-1 text-gray-700"
-                    >
-                      {description}
-                    </Paragraph>
+                    <li key={index}>
+                      <Paragraph typography="st9" className="text-gray-700">
+                        {description}
+                      </Paragraph>
+                    </li>
                   ))}
+                  </ul>
                 </div>
               ))}
             </div>

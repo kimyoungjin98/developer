@@ -43,7 +43,7 @@ const experiences = [{
   }],
 }];
 
-test("resume and career documents render bold data in linked titles, summaries and achievement lists", () => {
+test("resume and career documents render bold data in linked titles, company descriptions and achievement lists", () => {
   const header = {
     name: "개발자",
     role: "프론트엔드 개발자",
@@ -59,6 +59,6 @@ test("resume and career documents render bold data in linked titles, summaries a
     assert.match(html, /href="https:\/\/example.com\/erp"/);
     assert.doesNotMatch(html, /\*\*/);
   }
-  assert.match(career, /<strong[^>]*>React<\/strong>/);
+  assert.doesNotMatch(career, /React/);
   assert.match(career, /<strong[^>]*>개발 블로그<\/strong>/);
 });

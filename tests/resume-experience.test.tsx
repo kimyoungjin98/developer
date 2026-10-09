@@ -47,7 +47,10 @@ test("experience supports multiple teams and projects without optional stack or 
           description: "첫 번째 업무",
           projects: [
             { name: "프로젝트 A", description: "설명 A" },
-            { name: "프로젝트 B", description: "설명 B", techStack: [], achievements: [] },
+            { name: "프로젝트 B", description: "설명 B", link: "", links: [{ label: "App Store", href: " " }], techStack: [], achievements: [
+              { title: "미작성 문제", items: [] },
+              { title: "미작성 성과", items: ["", " "] },
+            ] },
           ],
         },
         {
@@ -63,6 +66,7 @@ test("experience supports multiple teams and projects without optional stack or 
     assert.ok(html.includes(text));
   }
   assert.doesNotMatch(html, /<ul\b|undefined/);
+  assert.doesNotMatch(html, /미작성 문제|미작성 성과|서비스 이동|App Store/);
 });
 
 test("experience renders portfolio periods, contributions, participation details and service links", () => {
@@ -84,6 +88,11 @@ test("experience renders portfolio periods, contributions, participation details
           teamSize: 3,
           contributionRate: 0,
           link: "https://example.com/service",
+          links: [
+            { label: "App Store", href: "https://apps.apple.com/app/example" },
+            { label: "Google Play", href: "https://play.google.com/store/apps/details?id=example" },
+            { label: "GitHub", href: "" },
+          ],
           achievements: [{ title: "성능 개선", items: ["조회 요청을 줄였습니다."] }],
         }],
       }]}
@@ -93,4 +102,11 @@ test("experience renders portfolio periods, contributions, participation details
     assert.ok(html.includes(text), `Missing portfolio content: ${text}`);
   }
   assert.match(html, /href="https:\/\/example\.com\/service"/);
+  assert.ok(html.includes("서비스 이동"));
+  assert.ok(html.includes('target="_blank"'));
+  assert.ok(html.includes('rel="noopener noreferrer"'));
+  assert.match(html, /href="https:\/\/apps.apple.com\/app\/example"/);
+  assert.ok(html.includes("App Store"));
+  assert.ok(html.includes("Google Play"));
+  assert.ok(!html.includes("GitHub"));
 });

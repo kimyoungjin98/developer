@@ -12,7 +12,7 @@ test("career document includes all projects, periods, duties and contributions f
   const projects = careerExperiences.flatMap(experience =>
     experience.teams.flatMap(team => team.projects),
   );
-  assert.equal(projects.length, 17);
+  assert.equal(projects.length, 20);
   for (const project of projects) {
     for (const text of [project.name, project.period!, project.description, `기여도 ${project.contributionRate}%`, ...project.achievements![0].items]) {
       assert.ok(html.includes(text), `Missing career content: ${text}`);
@@ -21,10 +21,10 @@ test("career document includes all projects, periods, duties and contributions f
   for (const text of ["사내 홈페이지 리뉴얼", "사진 미션 리워드 서비스", "베트남 여행 예약 플랫폼", "신체 기록 관리 서비스", "헬로 유니콘 웹/앱", "여행 상품·콘텐츠 운영 플랫폼", "클라이언트 ↔ 프리랜서 매칭 플랫폼"]) {
     assert.ok(html.includes(text), `Missing source project: ${text}`);
   }
-  assert.equal((html.match(/<h4\b/g) || []).length, 17);
+  assert.equal((html.match(/<h4\b/g) || []).length, 20);
   assert.ok(html.includes("2026.08 ~ 2026.09"));
   assert.ok(html.includes("기여도 100%"));
-  assert.ok(html.includes("Phaser를 활용한 미니게임 4종 구현"));
+  assert.ok(html.includes("Phaser3 + Angular 기반 미니게임 4종 개발"));
 });
 
 test("career document includes draft companies, teams, projects and achievements", () => {
