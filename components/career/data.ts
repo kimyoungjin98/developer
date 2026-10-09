@@ -28,8 +28,8 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "담당 업무",
                 items: [
-                  "기존 프로그램의 레거시 코드 리팩토링 및 유지보수",
-                  "UI 개선 및 기능 개선/추가",
+                  "Django 기반 백엔드 API 개발 및 기존 프로그램의 레거시 코드 리팩토링 및 유지보수",
+                  "React 기반 Client UI 개선 및 기능 개선/추가",
                 ],
               },
             ],
@@ -61,11 +61,10 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "담당 업무",
                 items: [
-                  "기획 및 아키텍처 설계",
-                  "주요 기능 개발",
-                  "PR 검토 및 코드 품질 관리",
-                  "ERP 프로그램 가이드 문서 작성",
-                  "MCP 서버 구축 및 플러그인 개발",
+                  "Nestjs 기반 백엔드 API 개발 및 기획 및 아키텍처 설계",
+                  "Github PR 검토 및 코드 품질 관리",
+                  "GitBook을 활용한 ERP 프로그램 가이드 문서 작성",
+                  "MCP 서버 구축 및 GPT/Claude 플러그인 개발",
                 ],
               },
             ],
@@ -89,9 +88,8 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "담당 업무",
                 items: [
-                  "메인 화면 디자인",
-                  "주요 화면 구현 및 기능 개발",
-                  "운영 환경 배포",
+                  "Next.js 기반 주요 화면 구현 및 기능 개발",
+                  "Coolify + Docker를 활용한 운영 환경 배포",
                 ],
               },
             ],
@@ -180,7 +178,10 @@ export const careerExperiences: ResumeExperienceProps[] = [
             achievements: [
               {
                 title: "담당 업무",
-                items: ["앱 디자인 시스템 구축", "화면 설계 및 구현"],
+                items: [
+                  "Angular 기반 앱 디자인 시스템 구축",
+                  "화면 설계 및 구현",
+                ],
               },
             ],
             techStack: ["Angular", "Prisma", "PostgreSQL", "Nx", "Nestjs"],
@@ -210,7 +211,13 @@ export const careerExperiences: ResumeExperienceProps[] = [
             achievements: [
               {
                 title: "담당 업무",
-                items: ["주요 기능 개발", "앱 구축 및 배포"],
+                items: [
+                  "실무 문서 템플릿 10종 제작 및 LLM 기반 문서 자동 생성 기능 개발",
+                  "안드로이드/IOS 앱 구축 및 스토어 배포",
+                  "Nestjs 기반 REST API 개발",
+                  "Angular 기반 웹/앱 구축 및 배포",
+                  "PostgreSQL DB 설계",
+                ],
               },
             ],
             techStack: [
@@ -233,8 +240,9 @@ export const careerExperiences: ResumeExperienceProps[] = [
                 title: "담당 업무",
                 items: [
                   "Google Maps API 기반 여행 상품 Search 컴포넌트 및 화면 구현",
-                  "메인 화면 구현",
-                  "어드민 페이지 개발",
+                  "Angular 기반 어드민 화면 구현",
+                  "Postgresql DB 설계",
+                  "Nestjs 기반 REST API 개발",
                 ],
               },
             ],
@@ -251,11 +259,10 @@ export const careerExperiences: ResumeExperienceProps[] = [
                 title: "담당 업무",
                 items: [
                   "React Native 기반 코드 베이스 구축",
-                  "주요 기능 개발",
-                  "회원 관리",
-                  "일정 관리",
+                  "회원 관리 API 개발 및 어드민 화면 구현",
+                  "일정 관리 API 개발 및 어드민 화면 구현",
                   "신체 기록 입력/조회",
-                  "앱 구축 및 스토어 배포",
+                  "안드로이드/IOS 앱 구축 및 스토어 배포",
                 ],
               },
             ],
@@ -297,10 +304,9 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "담당 업무",
                 items: [
-                  "메인 화면 구현",
                   "주요 화면 UI/UX 점검 및 개선",
-                  "DB 설계",
-                  "API 개발",
+                  "Postgresql DB 설계",
+                  "Nestjs 기반 REST API 개발",
                 ],
               },
             ],
@@ -315,7 +321,11 @@ export const careerExperiences: ResumeExperienceProps[] = [
             achievements: [
               {
                 title: "담당 업무",
-                items: ["주요 기능 개발(상품 및 게시물 노출 등)", "DB 설계"],
+                items: [
+                  "공지사항, 1:1 문의 등 게시판 API 개발 및 화면 구현",
+                  "상품 관리 및 상품 카테고리 관리 API 개발 및 화면 구현",
+                  "PostgresqlDB 설계",
+                ],
               },
             ],
             techStack: ["Nestjs", "PostgreSQL", "Angular", "Prisma", "Nx"],
@@ -329,7 +339,11 @@ export const careerExperiences: ResumeExperienceProps[] = [
             achievements: [
               {
                 title: "담당 업무",
-                items: ["모바일 앱 구축", "Phaser를 활용한 미니게임 4종 구현"],
+                items: [
+                  "PostgresqlDB 설계",
+                  "Ionic Capacitor를 활용한 모바일 앱 구축",
+                  "Phaser3 + Angular 기반 미니게임 4종 개발",
+                ],
               },
             ],
             techStack: [
@@ -370,7 +384,10 @@ export const careerExperiences: ResumeExperienceProps[] = [
             achievements: [
               {
                 title: "담당 업무",
-                items: ["화면 구현(프론트엔드 개발)", "앱 디자인 시스템 구축"],
+                items: [
+                  "Angular 화면 구현(프론트엔드 개발)",
+                  "앱 디자인 시스템 구축",
+                ],
               },
             ],
             techStack: ["Angular"],
@@ -385,9 +402,9 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "담당 업무",
                 items: [
-                  "어드민 개발 및 유지보수",
-                  "모바일 앱 개발 및 배포",
-                  "DB 설계",
+                  "Nuxt3 기반 어드민 개발 및 유지보수",
+                  "Ionic 기반 모바일 앱 개발 및 배포",
+                  "Postgresql DB 설계",
                   "성능 개선 및 유지보수",
                   "레거시 코드 리팩토링",
                 ],
@@ -412,7 +429,11 @@ export const careerExperiences: ResumeExperienceProps[] = [
             achievements: [
               {
                 title: "담당 업무",
-                items: ["화면 구현", "컴포넌트 시스템 구축"],
+                items: [
+                  "Vue3 기반 화면 구현",
+                  "컴포넌트 시스템 구축",
+                  "외부 라이브러리(Ag-grid, ApexCharts)를 활용한 복잡한 화면 구현",
+                ],
               },
             ],
             techStack: ["Vue", "Nuxt", "Pinia"],
@@ -427,8 +448,8 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "담당 업무",
                 items: [
-                  "프론트/백엔드 개발",
-                  "DB 설계",
+                  "Angular 및 Nestjs 기반 프론트/백엔드 개발",
+                  "Postgresql DB 설계",
                   "모두싸인 API 연동으로 전자 계약 자동화",
                   "바로빌 API 연동으로 세금계산서 자동 발행",
                   "결제 모듈(아임포트) 연동",
