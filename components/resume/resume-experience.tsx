@@ -29,7 +29,7 @@ export type ExperienceTeam = {
   draft?: boolean;
   name: string;
   period: string;
-  description: string;
+  description: string | string[];
   projects: ExperienceProject[];
 };
 
@@ -105,9 +105,11 @@ export function ResumeExperience({
                   {team.period}
                 </Paragraph.Text>
               </div>
-              <Paragraph typography="st8" className="text-gray-700">
-                {team.description}
-              </Paragraph>
+              {(Array.isArray(team.description) ? team.description : [team.description]).map((description, index) => (
+                <Paragraph key={index} typography="st8" className="text-gray-700">
+                  {description}
+                </Paragraph>
+              ))}
             </div>
 
             {team.projects.length > 0 && (
