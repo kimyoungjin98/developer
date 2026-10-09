@@ -1,5 +1,6 @@
 import {
   ResumeExperience,
+  type ExperienceAchievement,
   type ResumeExperienceProps,
 } from "../resume/resume-experience";
 import type { ResumeHeaderProps } from "../resume/resume-header";
@@ -9,10 +10,19 @@ import { renderBoldText } from "../typography/bold-text";
 export function CareerDocument({
   header,
   experiences,
+  qualifications = [],
 }: {
   header: ResumeHeaderProps;
   experiences: ResumeExperienceProps[];
+  qualifications?: ExperienceAchievement[];
 }) {
+  const visibleQualifications = qualifications
+    .filter((qualification) => !qualification.draft)
+    .map((qualification) => ({
+      ...qualification,
+      items: qualification.items.filter((item) => item.trim()),
+    }))
+    .filter((qualification) => qualification.items.length > 0);
   // 경력기술서는 전체 기록을 표시하되, 이력서 원본의 숨김 설정은 변경하지 않습니다.
   const careerExperiences = experiences.map((experience) => ({
     ...experience,
@@ -69,6 +79,34 @@ export function CareerDocument({
         </dl>
       </header>
 
+      {visibleQualifications.length > 0 && (
+        <section className="mt-8" aria-label="핵심 실무 경험">
+          <h2 data-a4-block data-a4-keep-with-next>
+            <Paragraph.Text typography="t3" fontWeight="semibold">
+              핵심 실무 경험
+            </Paragraph.Text>
+          </h2>
+          <div className="mt-4 space-y-4">
+            {visibleQualifications.map((qualification, index) => (
+              <div key={`${qualification.title}-${index}`} data-a4-block>
+                <Paragraph typography="st8" fontWeight="medium">
+                  {qualification.title}
+                </Paragraph>
+                <ul className="mt-2 list-disc space-y-1 pl-4 marker:text-zinc-400">
+                  {qualification.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>
+                      <Paragraph typography="st9" className="text-gray-700">
+                        {item}
+                      </Paragraph>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="mt-8" aria-label="경력 요약">
         <h2 data-a4-block data-a4-keep-with-next>
           <Paragraph.Text typography="t3" fontWeight="semibold">
@@ -93,20 +131,24 @@ export function CareerDocument({
               </div>
               {experience.teams.map((team) => (
                 <div key={`${team.name}-${team.period}`} className="mt-2">
-                  <Paragraph typography="st8" fontWeight="medium" className="text-zinc-900">
+                  <Paragraph
+                    typography="st8"
+                    fontWeight="medium"
+                    className="text-zinc-900"
+                  >
                     {team.name}
                   </Paragraph>
                   <ul className="mt-2 list-disc space-y-1 pl-4 marker:text-zinc-400">
-                  {(Array.isArray(team.description)
-                    ? team.description
-                    : [team.description]
-                  ).map((description, index) => (
-                    <li key={index}>
-                      <Paragraph typography="st9" className="text-gray-700">
-                        {description}
-                      </Paragraph>
-                    </li>
-                  ))}
+                    {(Array.isArray(team.description)
+                      ? team.description
+                      : [team.description]
+                    ).map((description, index) => (
+                      <li key={index}>
+                        <Paragraph typography="st9" className="text-gray-700">
+                          {description}
+                        </Paragraph>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               ))}

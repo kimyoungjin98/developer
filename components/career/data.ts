@@ -1,10 +1,14 @@
-import type { ResumeExperienceProps } from "../resume/resume-experience";
+import type {
+  ExperienceAchievement,
+  ResumeExperienceProps,
+} from "../resume/resume-experience";
 
 // docs/경력기술.md 기준으로 작성한 경력기술서 전용 데이터입니다.
 // 회사 재직 기간과 직책은 기존 이력서 정보를 기준으로 합니다.
 // 팀의 description 배열에 회사별 업무 소개를 여러 항목으로 입력합니다.
 // 프로젝트의 techStack 배열에 사용 기술을 추가합니다. 빈 배열은 표시하지 않습니다.
-// achievements의 문제·해결·성과 items 배열에 내용을 입력하세요. 빈 항목은 화면과 인쇄에서 숨깁니다.
+// 이력서는 문제·해결·성과, 경력기술서는 담당 범위·설계 판단·검증·운영을 중심으로 작성합니다.
+// 대표 프로젝트 3~5개부터 작성하세요. achievements의 빈 items 배열에 내용을 채우면 표시됩니다.
 // 기존 성과가 있는 프로젝트는 해당 성과의 items 배열에 추가할 수 있습니다.
 // pageBreakBefore: true를 추가하면 해당 프로젝트부터 새 A4 페이지를 시작합니다.
 // 지원 공고: 화해글로벌 프로덕트 엔지니어(프론트엔드)
@@ -16,6 +20,7 @@ import type { ResumeExperienceProps } from "../resume/resume-experience";
 // 성과 수치는 전후 값·측정 조건·기간을 함께 쓰세요. 이벤트 로깅·A/B 테스트·
 // Sentry·클라이언트 보안은 실제 경험이 있을 때만 추가하세요.
 // 팀 AX는 AI 기능 개발과 구분해 팀 개발 방식의 변화·검증 장치·효과를 적으세요.
+
 export const careerExperiences: ResumeExperienceProps[] = [
   {
     company: "업투유",
@@ -30,8 +35,6 @@ export const careerExperiences: ResumeExperienceProps[] = [
           "사내 ERP 기획·설계·개발과 코드 품질 관리",
           "사내 홈페이지 디자인·개발과 운영 환경 배포",
           "팀원 온보딩과 기술 공유, 코드 리뷰, GitHub PR 검토 및 품질 관리",
-          // 추가 작성: React·TypeScript 실무 기간과 프로젝트별 사용 범위(전체 경력과 구분).
-          // 추가 작성: 동료와의 기술 공유·리뷰·온보딩, 팀 AX 시도와 본인의 기여.
         ],
         projects: [
           {
@@ -49,21 +52,31 @@ export const careerExperiences: ResumeExperienceProps[] = [
             // 작성 질문: 기존 Django·React 시스템을 어떤 방법으로 이해했으며 첫 기여까지 얼마나 걸렸나요?
             // 작성 질문: React 화면·상태 관리 개선과 리팩터링의 검증 방법, 변경 전후 수치를 적으세요.
             // 필요하면 아래 항목의 주석을 해제하고 입력하세요.
-            // teamSize: 0, // 함께 개발한 인원 수
-            // roles: [], // 직접 담당한 역할
-            // contribution: "", // 기여도 산정 범위와 본인 담당 범위
+            teamSize: 2, // 함께 개발한 인원 수
             contributionRate: 100,
             achievements: [
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
               {
-                title: "담당 업무",
+                title: "담당 범위",
                 items: [
-                  "Django 기반 백엔드 API 개발 및 기존 프로그램의 레거시 코드 리팩토링 및 유지보수",
-                  "React 기반 Client UI 개선 및 기능 개선/추가",
+                  "Django 백엔드 API 추가 개발 및 유지보수",
+                  "React 클라이언트 UI 개선",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              {
+                title: "도메인 이해",
+                items: [
+                  "협업 개발자에게 기존 프로그램의 도메인과 업무 규칙을 문서화하여 전달받고, 코드 분석과 로컬 실행을 통해 도메인을 이해했습니다.",
+                ],
+              },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              {
+                title: "협업 및 팀 기여",
+                items: [
+                  "추가 개발시에 협업 개발자와 코드 리뷰를 진행하고, GitHub PR 검토를 통해 코드 품질을 관리했습니다.",
+                ],
+              },
             ],
             techStack: ["Python", "Django", "React", "MySQL"],
           },
@@ -82,21 +95,31 @@ export const careerExperiences: ResumeExperienceProps[] = [
             // 작성 질문: 수집 도메인의 제약, 오류 대응과 데이터 중복 방지를 어떻게 설계했나요?
             // 작성 질문: 운영 안정성이나 접근 제어를 검증한 방법이 있다면 적으세요.
             // 필요하면 아래 항목의 주석을 해제하고 입력하세요.
-            // teamSize: 0, // 함께 개발한 인원 수
-            // roles: [], // 직접 담당한 역할
-            // contribution: "", // 기여도 산정 범위와 본인 담당 범위
+            teamSize: 1, // 함께 개발한 인원 수
             contributionRate: 100,
             achievements: [
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
               {
-                title: "담당 업무",
+                title: "담당 범위",
                 items: [
-                  "작업 프로세스 설계",
-                  "서버 배포 및 수집 기기(노트북) 환경 구성",
+                  "전반적인 의사 결정 및 설계, 서버 배포, 수집 기기 환경 구성",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              {
+                title: "도메인 이해",
+                items: [
+                  "수집 대상 도메인의 HTML 구조와 API 응답을 분석하고, 수집 규칙과 예외 처리를 설계했습니다.",
+                ],
+              },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              {
+                title: "설계 판단 및 대안",
+                items: [
+                  "자동화 브라우저의 강력 차단 정책으로 인한 실기기(노트북) 브라우저 환경에서의 수집을 선택했습니다.",
+                  "여러 서버에서 수집을 진행할 수 있도록 서버-익스텐션 간 통신 구조를 설계했습니다.",
+                ],
+              },
             ],
             techStack: ["javascript", "Nestjs", "PostgreSQL", "Prisma"],
           },
@@ -117,25 +140,44 @@ export const careerExperiences: ResumeExperienceProps[] = [
             // 작성 질문: AI 개발에 제공한 도메인 문서·규칙, 코드 리뷰·테스트 등의 검증 장치와 팀 효과를 적으세요.
             // 작성 질문: React·TypeScript 화면 설계와 API 계약 논의, 사용자 피드백 또는 지표 검증을 적으세요.
             // 필요하면 아래 항목의 주석을 해제하고 입력하세요.
-            // teamSize: 0, // 함께 개발한 인원 수
+            teamSize: 2, // 함께 개발한 인원 수
             // roles: [], // 직접 담당한 역할
             // contribution: "", // 기여도 산정 범위와 본인 담당 범위
             contributionRate: 70,
             achievements: [
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
               {
-                title: "담당 업무",
+                title: "담당 범위",
                 items: [
+                  "요구사항 분석 및 기능 설계",
                   "Nestjs 기반 백엔드 API 개발 및 기획 및 아키텍처 설계",
                   "Github PR 검토 및 코드 품질 관리",
                   "GitBook을 활용한 ERP 프로그램 가이드 문서 작성",
                   "MCP 서버 구축 및 GPT/Claude 플러그인 개발",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "제품 오너십 및 협업", items: [] },
-              { title: "팀 AX 및 품질 검증", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              {
+                title: "도메인 이해",
+                items: [
+                  "사내 영업팀의 엑셀 기반 업무 프로세스를 분석하여 기능 정의 및 화면 설계",
+                  "그 외 연차/정산 등 사내 업무를 분석하여 ERP 프로그램에 반영",
+                ],
+              },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              {
+                title: "협업 및 팀 기여",
+                items: [
+                  "데일리 스크럼으로 업무 진행 상황을 공유하고, GitHub PR 검토를 통해 코드 품질을 관리했습니다.",
+                ],
+              },
+              // 팀 개발 흐름의 전후 변화, 에이전트에 제공한 도메인 문서·규칙, 코드 검수·테스트 장치를 적으세요.
+              {
+                title: "팀 AX 및 코드 품질 검증",
+                items: [
+                  "DB->서버->클라이언트 까지의 전체 흐름을 코드로 작성하고 Skills와 Plugin을 적극 활용하여 AI 에이전트가 개발자가 원하는 구조대로 작업을 수행할 수 있도록 했습니다.",
+                ],
+              },
             ],
             techStack: [
               "Next.js",
@@ -163,22 +205,48 @@ export const careerExperiences: ResumeExperienceProps[] = [
             // 작성 질문: 실제로 적용한 Next.js SSR·SEO 전략과 선택 이유를 적으세요.
             // 작성 질문: React·TypeScript 담당 범위, 배포 이후 확인한 성능·사용성 지표가 있다면 적으세요.
             // 필요하면 아래 항목의 주석을 해제하고 입력하세요.
-            // teamSize: 0, // 함께 개발한 인원 수
-            // roles: [], // 직접 담당한 역할
+            teamSize: 1, // 함께 개발한 인원 수
+            roles: ["프론트엔드 개발", "홈페이지 디자인"], // 직접 담당한 역할
             // contribution: "", // 기여도 산정 범위와 본인 담당 범위
             contributionRate: 80,
             achievements: [
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
               {
-                title: "담당 업무",
+                title: "담당 범위",
                 items: [
                   "Next.js 기반 주요 화면 구현 및 기능 개발",
                   "Coolify + Docker를 활용한 운영 환경 배포",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "SSR·SEO 설계", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              {
+                title: "도메인 이해",
+                items: [
+                  "기존 홈페이지와 같은 업종의 타사 홈페이지를 분석하고, 사내 구성원과 협업하여 홈페이지의 목적과 요구사항을 정의했습니다.",
+                ],
+              },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              {
+                title: "검증 및 운영",
+                items: [
+                  "Discord 웹훅을 활용하여 홈페이지에 연결된 문의 폼의 제출 내역을 실시간으로 확인할 수 있도록 구현했습니다.",
+                ],
+              },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              {
+                title: "협업 및 팀 기여",
+                items: [
+                  "디자이너와 협업하여 홈페이지의 디자인을 결정하고 힉스필드를 활용하여 메인 화면의 영상을 제작했습니다.",
+                ],
+              },
+              // 페이지별 렌더링 방식·선택 이유·메타데이터·검색 노출 검증을 실제 적용 범위로 적으세요.
+              {
+                title: "SSR·SEO 적용",
+                items: [
+                  "Google Search Console을 활용하여 홈페이지의 검색 노출을 모니터링 하였습니다.",
+                  "AEO/GEO를 고려하여 SEO 메타데이터를 작성하였고 실제 Gemini 대화에서 원하는 키워드에 회사가 노출되는 것을 확인했습니다.",
+                ],
+              },
             ],
             techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
           },
@@ -245,9 +313,21 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "LLM이 생성한 기획 문서의 품질을 높이기 위해서는 LLM에게 더 많은 컨텍스트를 제공해야 하는데, 이로 인해 비용이 증가하고 병목이 생기는 문제",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "팀 AX 및 검증·중단 판단", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
+              // 팀 개발 흐름의 전후 변화, 에이전트에 제공한 도메인 문서·규칙, 코드 검수·테스트 장치를 적으세요.
+              { title: "팀 AX 및 코드 품질 검증", items: [] },
+              // 평가 대상·비교 기준·비용·품질·지연을 어떻게 검증했고 중단 후 무엇을 반영했는지 적으세요.
+              { title: "평가 및 중단 판단", items: [] },
             ],
             techStack: ["Angular", "Nx", "Electron", "Mastra"],
           },
@@ -286,9 +366,21 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "Gemini Flash 모델을 활용하여 적은 비용으로 빠른 코드 분석이 가능하도록 구현했지만 Claude, Codex 등 모델들의 성능이 좋아지면서 유의미한 성과를 내지 못해 프로젝트를 중단",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "팀 AX 및 검증·중단 판단", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
+              // 팀 개발 흐름의 전후 변화, 에이전트에 제공한 도메인 문서·규칙, 코드 검수·테스트 장치를 적으세요.
+              { title: "팀 AX 및 코드 품질 검증", items: [] },
+              // 평가 대상·비교 기준·비용·품질·지연을 어떻게 검증했고 중단 후 무엇을 반영했는지 적으세요.
+              { title: "평가 및 중단 판단", items: [] },
             ],
             techStack: ["Angular", "Nx", "Electron", "Mastra"],
           },
@@ -320,10 +412,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "화면 설계 및 구현",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "제품 오너십 및 협업", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Angular", "Prisma", "PostgreSQL", "Nx", "Nestjs"],
           },
@@ -355,9 +454,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "어드민 개발",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Angular", "Nestjs", "Prisma", "PostgreSQL", "Nx"],
           },
@@ -391,10 +498,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "PostgreSQL DB 설계",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "도메인 이해 및 설계", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: [
               "Prisma",
@@ -435,9 +549,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "Nestjs 기반 REST API 개발",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Google Maps API"],
           },
@@ -472,10 +594,19 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "안드로이드/IOS 앱 구축 및 스토어 배포",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "스토어 출시 및 운영", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
+              // 빌드·심사·스토어 릴리즈·버전 관리와 출시 후 운영에서 맡은 범위를 적으세요.
+              { title: "React Native 출시 및 운영", items: [] },
             ],
             techStack: ["React Native"],
           },
@@ -508,9 +639,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "AWS 기반 인프라 구성 및 배포",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: [
               "AWS",
@@ -551,9 +690,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "Nestjs 기반 REST API 개발",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Nestjs", "PostgreSQL", "Angular", "Prisma", "Nx"],
           },
@@ -586,9 +733,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "PostgresqlDB 설계",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Nestjs", "PostgreSQL", "Angular", "Prisma", "Nx"],
           },
@@ -621,9 +776,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "Phaser3 + Angular 기반 미니게임 4종 개발",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: [
               "Nx",
@@ -666,10 +829,19 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "Storybook을 활용한 가이드 문서 작성",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "운영 및 성장 공유", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
+              // 버전 정책·호환성 검증·접근성·동료 기여 프로세스와 기술 공유 방식을 적으세요.
+              { title: "패키지 운영 및 변경 관리", items: [] },
             ],
             techStack: ["Angular", "Figma", "Storybook", "npm"],
           },
@@ -700,9 +872,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "앱 디자인 시스템 구축",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Angular"],
           },
@@ -737,10 +917,19 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "레거시 코드 리팩토링",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "성능 측정 및 운영", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
+              // 이력서 수치의 측정 환경·도구·재현 조건과 병목을 확인한 방법을 적으세요.
+              { title: "성능 측정 및 관측", items: [] },
             ],
             techStack: [
               "Vue",
@@ -781,9 +970,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "외부 라이브러리(Ag-grid, ApexCharts)를 활용한 복잡한 화면 구현",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Vue", "Nuxt", "Pinia"],
           },
@@ -818,10 +1015,17 @@ export const careerExperiences: ResumeExperienceProps[] = [
                   "결제 모듈(아임포트) 연동",
                 ],
               },
-              { title: "문제", items: [] },
-              { title: "해결", items: [] },
-              { title: "성과", items: [] },
-              { title: "도메인 이해 및 설계", items: [] },
+
+              // 직접 책임진 기능·설계·배포 범위와 동료가 담당한 부분을 구분하세요.
+              { title: "담당 범위", items: [] },
+              // 사용자 업무의 규칙·예외·제약을 어떻게 파악하고 설계에 반영했는지 적으세요.
+              { title: "도메인 이해", items: [] },
+              // 선택한 구조·기술과 이유, 검토한 대안과 포기한 조건을 적으세요.
+              { title: "설계 판단 및 대안", items: [] },
+              // 검수·테스트·배포·장애 대응의 실제 방법을 적으세요. 이력서 성과를 반복하지 않아도 됩니다.
+              { title: "검증 및 운영", items: [] },
+              // PM·디자이너·개발자와 결정한 내용, 리뷰·온보딩·기술 공유에서 본인의 기여를 적으세요.
+              { title: "협업 및 팀 기여", items: [] },
             ],
             techStack: ["Angular", "Nestjs", "TypeORM", "PostgreSQL", "Nx"],
           },

@@ -2,12 +2,12 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { CareerDocument } from "../components/career/career-document";
-import { careerExperiences } from "../components/career/data";
+import { careerExperiences, careerQualifications } from "../components/career/data";
 import { resumeHeader } from "../components/resume/data";
 
 test("career document includes all projects, periods, duties and contributions from the source document", () => {
   const html = renderToStaticMarkup(
-    <CareerDocument header={resumeHeader} experiences={careerExperiences} />,
+    <CareerDocument header={resumeHeader} experiences={careerExperiences} qualifications={careerQualifications} />,
   );
   const projects = careerExperiences.flatMap(experience =>
     experience.teams.flatMap(team => team.projects),
@@ -25,6 +25,29 @@ test("career document includes all projects, periods, duties and contributions f
   assert.ok(html.includes("2026.08 ~ 2026.09"));
   assert.ok(html.includes("기여도 100%"));
   assert.ok(html.includes("Phaser3 + Angular 기반 미니게임 4종 개발"));
+});
+
+test("career qualifications display authored items and hide unfinished or draft sections", () => {
+  const empty = renderToStaticMarkup(
+    <CareerDocument header={resumeHeader} experiences={[]} qualifications={[
+      { title: "미작성 경력", items: ["", " "] },
+    ]} />,
+  );
+  assert.ok(!empty.includes("핵심 실무 경험"));
+  assert.ok(!empty.includes("미작성 경력"));
+
+  const filled = renderToStaticMarkup(
+    <CareerDocument header={resumeHeader} experiences={[]} qualifications={[
+      { title: "React 실무 경력", items: ["프로젝트 A에서 **React** 화면 설계", " "] },
+      { title: "미작성 SSR", items: [] },
+      { title: "숨긴 운영 경험", items: ["숨긴 내용"], draft: true },
+    ]} />,
+  );
+  assert.ok(filled.includes("핵심 실무 경험"));
+  assert.ok(filled.includes("React 실무 경력"));
+  assert.match(filled, /<strong[^>]*>React<\/strong>/);
+  assert.ok(!filled.includes("미작성 SSR"));
+  assert.ok(!filled.includes("숨긴 운영 경험"));
 });
 
 test("career document includes draft companies, teams, projects and achievements", () => {
