@@ -611,7 +611,7 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "협업 및 팀 기여",
                 items: [
-                  "기존 사내 프로젝트에서 React Native 앱을 개발한 경험이 없었기 때문에 Documen와 Github 소스를 참고하여 React Native 앱 개발 환경을 구축하였습니다.",
+                  "기존 사내 프로젝트에서 React Native 앱을 개발한 경험이 없었기 때문에 Documen와 Github 소스를 참고하여 **React Native 앱 개발 환경을 구축**하였습니다.",
                 ],
               },
             ],
@@ -774,7 +774,7 @@ export const careerExperiences: ResumeExperienceProps[] = [
                 title: "협업 및 팀 기여",
                 items: [
                   "Scene 기반의 게임 구조를 설계하고, Phaser3의 Scene과 Angular의 Component를 연동하여 게임 화면을 구현했습니다.",
-                  "사내에서 Phaser3는 처음 사용되는 기술이었는데 해당 기술을 도입하고 게임 개발을 진행하면서 동료들에게 Phaser3 기반 게임 개발 방법을 공유했습니다.",
+                  "사내에서 Phaser3는 **처음 사용되는** 기술이었는데 해당 **기술을 도입**하고 게임 개발을 진행하면서 동료들에게 Phaser3 기반 게임 개발 방법을 공유했습니다.",
                 ],
               },
             ],
@@ -903,14 +903,14 @@ export const careerExperiences: ResumeExperienceProps[] = [
               {
                 title: "도메인 이해",
                 items: [
-                  "클라이언트와 직접 미팅을 진행하여 A/S 접수와 처리 현황 확인의 업무 규칙과 예외 사항을 파악하고 설계에 반영했습니다。",
+                  "**클라이언트와 직접 미팅**을 진행하여 A/S 접수와 처리 현황 확인의 업무 규칙과 예외 사항을 파악하고 설계에 반영했습니다。",
                 ],
               },
               // 이력서 수치의 측정 환경·도구·재현 조건과 병목을 확인한 방법을 적으세요.
               {
                 title: "레거시 코드 리팩토링",
                 items: [
-                  "레거시 코드는 유지보수가 어렵고 성능이 저하되는 문제가 있었기 때문에, Nuxt3와 Nuxt UI를 사용하여 화면을 구성하는 모든 컴포넌트를 재작성하고, DB 쿼리와 API를 최적화하여 성능을 개선했습니다.",
+                  "레거시 코드는 유지보수가 어렵고 성능이 저하되는 문제가 있었기 때문에, Nuxt3와 Nuxt UI를 사용하여 화면을 구성하는 **모든 컴포넌트를 재작성**하고, DB 쿼리와 API를 최적화하여 성능을 개선했습니다.",
                 ],
               },
             ],
@@ -923,38 +923,6 @@ export const careerExperiences: ResumeExperienceProps[] = [
               "Capacitor",
               "Ionic",
             ],
-          },
-          {
-            name: "광고 통합 관리 시스템",
-            period: "2022.09 ~ 2022.11",
-            description:
-              "여러 플랫폼의 광고 데이터를 한 화면에서 조회하는 관리 툴",
-            // 서비스 URL을 입력하면 서비스 이동 버튼이 표시됩니다.
-            link: "",
-            // 필요한 URL만 입력하세요. 빈 주소는 버튼을 표시하지 않습니다.
-            links: [
-              { label: "App Store", href: "" },
-              { label: "Google Play", href: "" },
-              { label: "GitHub", href: "" },
-            ],
-            // 작성 질문: 본인이 책임진 설계·구현·API 연동·배포 범위를 적으세요.
-            // 작성 질문: 사용자 문제와 협업 과정, 검증 가능한 개선 결과가 있다면 적으세요.
-            // 필요하면 아래 항목의 주석을 해제하고 입력하세요.
-            // teamSize: 0, // 함께 개발한 인원 수
-            // roles: [], // 직접 담당한 역할
-            // contribution: "", // 기여도 산정 범위와 본인 담당 범위
-            contributionRate: 30,
-            achievements: [
-              {
-                title: "담당 업무",
-                items: [
-                  "Vue3 기반 화면 구현",
-                  "컴포넌트 시스템 구축",
-                  "외부 라이브러리(Ag-grid, ApexCharts)를 활용한 복잡한 화면 구현",
-                ],
-              },
-            ],
-            techStack: ["Vue", "Nuxt", "Pinia"],
           },
           {
             name: "클라이언트 ↔ 프리랜서 매칭 플랫폼",
