@@ -10,10 +10,12 @@ export const resumeHeader: ResumeHeaderProps = {
   name: "김영진",
   role: "풀스택 개발자",
   imageSrc: "me.jpg",
-  summary: `React, Angular, Nestjs, TypeScript 기반의 **5년차** 풀스택 개발자 입니다.
+  summary: `Node.js, TypeScript 기반의 **5년차** 풀스택 개발자 입니다.
 
-또한 단순히 기능 구현이 끝이 아니라, 사용자가 서비스를 이용했을 때 
-어떤 경험을 하게 될지까지 고려하며 개발하고 있습니다.
+  **Client**는 React(Next.js), Angular, Vue(Nuxt3)
+  **Server**는 Nestjs
+  **배포 환경 구성**은 AWS, NHN Cloud
+  이와 같이 다양한 기술 스택을 활용하여 프로젝트를 기획하고 개발하며, 서비스의 **기능 구현뿐만 아니라 사용자 경험까지 고려**하며 개발하고 있습니다.
 
 기술에 매몰되지 않고 **문제**에 집중하며, 문제를 해결하기 위해 **기술을 적절히 활용**하는 개발을 지향합니다.
 `,
